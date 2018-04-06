@@ -1,0 +1,41 @@
+ Inserted in ScopeTable# 1 at position 4, 0
+ Inserted in ScopeTable# 1 at position 0, 0
+Found in ScopeTable# 1at position 4,0
+Not found!
+ Inserted in ScopeTable# 1 at position 4, 0
+Printing All Scope table:
+Printing Scope Table:
+i VAR
+foo FUNCTION
+5 NUMBER
+Not found!
+Found in ScopeTable# 1at position 0, 0
+Printing All Scope table:
+Printing Scope Table:
+foo FUNCTION
+5 NUMBER
+ Inserted in ScopeTable# 2 at position 3, 0
+ Inserted in ScopeTable# 2 at position 6, 0
+Printing All Scope table:
+Printing Scope Table:
+foo FUNCTION
+5 NUMBER
+Printing Scope Table:
+<= RELOP
+== RELOP
+Error! already exist
+ Inserted in ScopeTable# 2 at position 4, 0
+Found in ScopeTable# 2at position 6, 0
+Printing All Scope table:
+Printing Scope Table:
+foo FUNCTION
+5 NUMBER
+Printing Scope Table:
+<= RELOP
+foo FUNCTION
+ Inserted in ScopeTable# 1 at position 4, 0
+ Inserted in ScopeTable# 1 at position 2, 0
+Printing All Scope table:
+Printing Scope Table:
+foo FUNCTION
+5 NUMBER
