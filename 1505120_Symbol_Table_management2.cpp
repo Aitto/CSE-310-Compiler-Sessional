@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<iostream>
 #include<cstring>
@@ -39,7 +40,6 @@ class ScopeTable{
 private:
     int tableSize;
     int position;
-    int id;
     //Double pointer. For containing 2D pointer.
     SymbolInfo **HashFile;
 
@@ -175,25 +175,16 @@ public:
     }
 
     void Print(){
-        cout<< " Scope Table # "<<id<< "\n"<<endl;
+        cout<< "Printing Scope Table: "<<endl;
         for(int i=0;i<tableSize;i++){
-            cout<< " ["<<i<< "]-->";
+
             SymbolInfo *temp=HashFile[i];
 
             while(temp!=0){
                 cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
                 temp=temp->next;
             }
-            cout<<endl;
         }
-    }
-
-    void setId(int x){
-        id=x;
-    }
-
-    int getId(){
-        return id;
     }
 };
 
@@ -218,7 +209,6 @@ public:
             head->next=0;
             head->prev=0;
             tail=head;
-            head->setId(tableNumber);
         }
         else{
             ScopeTable *newScope=new ScopeTable(hashSize);
@@ -226,7 +216,6 @@ public:
             newScope->prev=tail;
             tail=newScope;
             newScope->next=0;
-            tail->setId(tableNumber);
         }
     }
 
@@ -234,7 +223,6 @@ public:
         tableNumber--;
         if(tail!=0){
             if(tail->prev!=0){
-                free(tail->prev->next);
                 tail->prev->next=0;
                 tail=tail->prev;
                 //free(tail);
@@ -279,7 +267,7 @@ public:
     }
 
     void PrintCurrent(){
-        cout<< "Printing Current Scope Table: \n"<<endl;
+        cout<< "Printing Current Scope Table: "<<endl;
 
         if(tail!=0){
             tail->Print();
@@ -287,7 +275,7 @@ public:
     }
 
     void PrintAll(){
-        cout<< "Printing All Scope table: \n"<<endl;
+        cout<< "Printing All Scope table: "<<endl;
 
         ScopeTable *temp=head;
 
@@ -298,9 +286,8 @@ public:
             temp=temp->next;
         }
     }
-
     int getTableNumber(){
-        return tail->getId();
+        return tableNumber;
     }
 };
 
@@ -324,7 +311,7 @@ int main(){
                 {
                     cin>>en1>>en2;
                     if(st.Insert(en1,en2))
-                        cout<< "\n Inserted in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
+                        cout<< " Inserted in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
                     else
                         cout<< "Error! already exist"<<endl;
                     break;
@@ -333,7 +320,7 @@ int main(){
                 {
                     cin>>en1;
                     //SymbolInfo *te;
-                    if(st.Lookup(en1)!=0) cout<< "\n Found in ScopeTable# "<<iTable<< " at position "<<iIndex<<","<<iPosition<<endl;
+                    if(st.Lookup(en1)!=0) cout<< "Found in ScopeTable# "<<iTable<< "at position "<<iIndex<<","<<iPosition<<endl;
                     else cout<< "Not found!"<<endl;
                     break;
                 }
@@ -341,9 +328,9 @@ int main(){
                 {
                     cin>>en1;
                     if(st.Remove(en1)){
-                        cout<< "\n Found in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
+                        cout<< "Found in ScopeTable# "<<st.getTableNumber()<< "at position "<<iIndex<< ", "<<iPosition<<endl;
                     }
-                    else cout<< "\n Not found!"<<endl;
+                    else cout<< "Not found!"<<endl;
                     break;
                 }
             case 'P':
