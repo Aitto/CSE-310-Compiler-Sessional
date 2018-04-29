@@ -33,7 +33,7 @@ public:
     }
 
     //Inserting into Hash table
-    bool Insert(string symbol_name,string symbol_type){
+    bool Insert(string symbol_type,string symbol_name){
         //If variable with the same name in the current scope, then return false
         if(Lookup(symbol_name)!=0) return false;
 
@@ -54,11 +54,11 @@ public:
 
             //Insert new item in the chain
             temp->next=newSymbol;
-            newSymbol->setSymbol(symbol_name,symbol_type);
+            newSymbol->setSymbol(symbol_type,symbol_name);
             newSymbol->prev=temp;
         }else{ //If empty Hash table, then allocate memory and put symbol info
             HashFile[index]=new SymbolInfo;
-            HashFile[index]->setSymbol(symbol_name,symbol_type);
+            HashFile[index]->setSymbol(symbol_type,symbol_name);
         }
         return true;
     }

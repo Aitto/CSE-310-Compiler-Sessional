@@ -37,21 +37,23 @@ public:
         tableNumber--;
         if(tail!=0){
             if(tail->prev!=0){
-                free(tail->prev->next);
-                tail->prev->next=0;
-                tail=tail->prev;
+                ScopeTable *temp=tail->prev;
+                free(tail);
+                temp->next=0;
+                tail=temp;
                 //free(tail);
             }else{
+                ScopeTable *temp=tail;
                 head=0;
                 tail=0;
-                free(tail);
+                free(temp);
             }
         }
     }
 
     bool Insert(string symbol_name,string symbol_type){
         if(tail!=0){
-            return tail->Insert(symbol_name,symbol_type);
+            return tail->Insert(symbol_type,symbol_name);
         }
         return 0;
     }
