@@ -1,0 +1,52 @@
+Line No. 1: Token <IF> Lexeme if found
+Line No. 1: Token <ELSE> Lexeme else found
+
+ Inserten is Scopetable #1 at position 7 0
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+Error at line 1. Identifier 0_ defiened wrong
+Line No. 2: Token <SWITCH> Lexeme switch found
+Line No. 2: Token <CASE> Lexeme case found
+Line No. 2: Token <IF> Lexeme if found
+Line No. 2: Token <CONTINUE> Lexeme continue found
+Line No. 2: Token <ELSE> Lexeme else found
+Line No. 2: Token <RETURN> Lexeme return found
+Line No. 2: Token <CONTINUE> Lexeme continue found
+Error at line 3, 1234567891234567 oo many digits for an integer
+Error at line 3, 1234567891234567 oo many digits for an integer
+
+ Inserten is Scopetable #1 at position -13 0
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+
+ Inserten is Scopetable #1 at position 46 0
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+ [46]--><CONST_INT, 98787>
+Error at line 12. Identifier 0123abc defiened wrong
+
+ Inserten is Scopetable #1 at position 17 0
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+ [17]--><CONST_INT, 2>
+ [46]--><CONST_INT, 98787>
+
+ Inserten is Scopetable #1 at position 17 0
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+ [17]--><CONST_INT, 2><CONST_INT, 2>
+ [46]--><CONST_INT, 98787>
+Line No. 20: Token <IF> Lexeme if found
+
+ Inserten is Scopetable #1 at position 17 1
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+ [17]--><CONST_INT, 2><CONST_INT, 2><CONST_INT, 2>
+ [46]--><CONST_INT, 98787>
+
+ Inserten is Scopetable #1 at position 18 1
+ Scope Table # 1
+ [7]--><CONST_INT, 989>
+ [17]--><CONST_INT, 2><CONST_INT, 2><CONST_INT, 2>
+ [18]--><CONST_INT, 3>
+ [46]--><CONST_INT, 98787>

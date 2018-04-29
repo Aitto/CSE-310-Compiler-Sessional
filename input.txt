@@ -1,2 +1,20 @@
 aditya chakma if else _0 0989 _a abc_0 0_ 0.9867 986.30E-1243 2467.8327 38.0E29
 switch case if continue else return continue
+1234567891234567
+00098787
+
+-
+
+'\n'
+'\0'
+'\b'
+
+0123abc
+a=b+c;
+a=b/c;
+a++;
+--b;
+a<b;
+a<<2
+a^2
+if(2&&3) then a|b

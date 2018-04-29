@@ -84,7 +84,7 @@ public:
     }
 
     void PrintCurrent(){
-        cout<< "Printing Current Scope Table: \n"<<endl;
+        //cout<< "Printing Current Scope Table: \n"<<endl;
 
         if(tail!=0){
             tail->Print();
@@ -108,3 +108,6 @@ public:
         return tail->getId();
     }
 };
+
+
+SymbolTable st;

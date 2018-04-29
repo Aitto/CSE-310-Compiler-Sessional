@@ -141,16 +141,27 @@ public:
     }
 
     void Print(){
-        cout<< " Scope Table # "<<id<< "\n"<<endl;
+        //cout<< " Scope Table # "<<id<< "\n"<<endl;
+	fprintf(logOut," Scope Table # %d\n",id);
         for(int i=0;i<tableSize;i++){
-            cout<< " ["<<i<< "]-->";
-            SymbolInfo *temp=HashFile[i];
+	    SymbolInfo *temp=HashFile[i];
+	    if(temp==0) continue;
+            //cout<< " ["<<i<< "]-->";
+	    fprintf(logOut," [%d]-->",i);
+            
 
             while(temp!=0){
-                cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
+		const char *sn=new char[temp->symbol_name.length()+1];
+		sn=temp->symbol_name.c_str();
+		const char *st=new char[temp->symbol_type.length()+1];
+		st=temp->symbol_type.c_str();
+	        fprintf(logOut,"<%s, %s>",sn,st);
+               // cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
                 temp=temp->next;
+		//free(sn);
+		//free(st);
             }
-            cout<<endl;
+            fprintf(logOut,"\n");
         }
     }
 

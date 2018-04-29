@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<iostream>
-#include<cstring>
+#include<string.h>
 #include<stdlib.h>
 
 #define sf scanf
@@ -13,6 +13,11 @@ using namespace std;
 int iPosition;
 int iIndex;
 int iTable;
+int hashSize;
+
+FILE *fin;
+FILE *tokenOut;
+FILE *logOut;
 
 //Symbol info class. Containing symbol name and type
 class SymbolInfo{
