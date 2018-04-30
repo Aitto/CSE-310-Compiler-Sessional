@@ -1,52 +1,568 @@
-Line No. 1: Token <IF> Lexeme if found
-Line No. 1: Token <ELSE> Lexeme else found
 
- Inserten is Scopetable #1 at position 7 0
+Line No. 1: Token <ID> Lexeme aditya found
+
+ Inserted is Scopetable #1 at position 1 0
+
  Scope Table # 1
- [7]--><CONST_INT, 989>
-Error at line 1. Identifier 0_ defiened wrong
-Line No. 2: Token <SWITCH> Lexeme switch found
-Line No. 2: Token <CASE> Lexeme case found
+ [1]--><ID, aditya>
+
+Line No. 1: Token <ID> Lexeme chakma found
+
+ Inserted is Scopetable #1 at position 38 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [38]--><ID, chakma>
+
 Line No. 2: Token <IF> Lexeme if found
-Line No. 2: Token <CONTINUE> Lexeme continue found
-Line No. 2: Token <ELSE> Lexeme else found
-Line No. 2: Token <RETURN> Lexeme return found
-Line No. 2: Token <CONTINUE> Lexeme continue found
-Error at line 3, 1234567891234567 oo many digits for an integer
-Error at line 3, 1234567891234567 oo many digits for an integer
 
- Inserten is Scopetable #1 at position -13 0
- Scope Table # 1
- [7]--><CONST_INT, 989>
+Line No. 3: Token <CONST_FLOAT> Lexeme 10.02 found
 
- Inserten is Scopetable #1 at position 46 0
- Scope Table # 1
- [7]--><CONST_INT, 989>
- [46]--><CONST_INT, 98787>
-Error at line 12. Identifier 0123abc defiened wrong
+ Inserted is Scopetable #1 at position 48 0
 
- Inserten is Scopetable #1 at position 17 0
  Scope Table # 1
- [7]--><CONST_INT, 989>
+ [1]--><ID, aditya>
+ [38]--><ID, chakma>
+ [48]--><CONST_FLOAT, 10.02>
+
+Error at line 3. Invalid prefix on ID or invalid suffix on Number 0123ebas
+
+Error at line 3. Ill formed Number 1E10.7
+
+Line No. 3: Token <CONST_FLOAT> Lexeme 123E12 found
+
+Line No. 3: Token <CONST_FLOAT> Lexeme 12.34E6 found
+
+Line No. 4: Token <SWITCH> Lexeme switch found
+
+Line No. 4: Token <CASE> Lexeme case found
+
+Line No. 4: Token <IF> Lexeme if found
+
+Line No. 4: Token <CONTINUE> Lexeme continue found
+
+Line No. 4: Token <ELSE> Lexeme else found
+
+Line No. 4: Token <RETURN> Lexeme return found
+
+Line No. 4: Token <CONTINUE> Lexeme continue found
+
+Line No. 5: Token <CONST_INT> Lexeme 1234567891234567 found
+
+ Inserted is Scopetable #1 at position 22 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [22]--><CONST_INT, 1234567891234567>
+ [38]--><ID, chakma>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 6: Token <CONST_INT> Lexeme 00098787 found
+
+ Inserted is Scopetable #1 at position 28 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 8: Token <CONST_CHAR> Lexeme 'a' found
+
+ Inserted is Scopetable #1 at position 12 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [12]--><CONST_CHAR, 'a'>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 8: Token <CONST_CHAR> Lexeme 'b' found
+
+ Inserted is Scopetable #1 at position 43 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [12]--><CONST_CHAR, 'a'>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 8: Token <CONST_CHAR> Lexeme '\'' found
+
+ Inserted is Scopetable #1 at position 6 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [12]--><CONST_CHAR, 'a'>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 10: Token <COMMENT> Lexeme //This is a single line comment found
+
+Line No. 12: Token <STRING> Lexeme " string" found
+
+Line No. 13: Token <STRING> Lexeme "multiline\
+string" found
+
+Line No. 15: Token <COMMENT> Lexeme // This is a \
+multiline \
+comment \
+1 \
+2 \
+3 found
+
+Line No. 16: Token <CONST_INT> Lexeme 4 found
+
+ Inserted is Scopetable #1 at position 19 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [12]--><CONST_CHAR, 'a'>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 18: Token <CONST_CHAR> Lexeme '\t' found
+
+ Inserted is Scopetable #1 at position 43 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [12]--><CONST_CHAR, 'a'>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 19: Token <CONST_CHAR> Lexeme '\n' found
+
+ Inserted is Scopetable #1 at position 7 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 20: Token <CONST_CHAR> Lexeme '\b' found
+
+ Inserted is Scopetable #1 at position 35 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 23: Token <COMMENT> Lexeme // this is too found
+
+Error at line 25. Invalid prefix on ID or invalid suffix on Number 0123abc
+
+Line No. 26: Token <ID> Lexeme a found
+
+ Inserted is Scopetable #1 at position 14 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 26: Token <ID> Lexeme b found
+
+ Inserted is Scopetable #1 at position 15 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 26: Token <ID> Lexeme c found
+
+ Inserted is Scopetable #1 at position 16 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 26: Token <SEMICOLON> Lexeme ; found
+
+Line No. 27: Token <ID> Lexeme a found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 27: Token <ID> Lexeme b found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 27: Token <ID> Lexeme c found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 27: Token <SEMICOLON> Lexeme ; found
+
+Line No. 28: Token <ID> Lexeme a found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 28: Token <SEMICOLON> Lexeme ; found
+
+Line No. 29: Token <ID> Lexeme b found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 29: Token <SEMICOLON> Lexeme ; found
+
+Line No. 30: Token <ID> Lexeme a found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 30: Token <ID> Lexeme b found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 30: Token <SEMICOLON> Lexeme ; found
+
+Line No. 31: Token <ID> Lexeme a found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 31: Token <CONST_INT> Lexeme 2 found
+
+ Inserted is Scopetable #1 at position 17 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
  [17]--><CONST_INT, 2>
- [46]--><CONST_INT, 98787>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
 
- Inserten is Scopetable #1 at position 17 0
- Scope Table # 1
- [7]--><CONST_INT, 989>
- [17]--><CONST_INT, 2><CONST_INT, 2>
- [46]--><CONST_INT, 98787>
-Line No. 20: Token <IF> Lexeme if found
+Line No. 32: Token <ID> Lexeme a found
 
- Inserten is Scopetable #1 at position 17 1
  Scope Table # 1
- [7]--><CONST_INT, 989>
- [17]--><CONST_INT, 2><CONST_INT, 2><CONST_INT, 2>
- [46]--><CONST_INT, 98787>
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
 
- Inserten is Scopetable #1 at position 18 1
+Line No. 32: Token <CONST_INT> Lexeme 2 found
+
  Scope Table # 1
- [7]--><CONST_INT, 989>
- [17]--><CONST_INT, 2><CONST_INT, 2><CONST_INT, 2>
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 33: Token <IF> Lexeme if found
+
+Line No. 33: Token <LPAREN> Lexeme ( found
+
+Line No. 33: Token <CONST_INT> Lexeme 2 found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 33: Token <CONST_INT> Lexeme 3 found
+
+ Inserted is Scopetable #1 at position 18 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
  [18]--><CONST_INT, 3>
- [46]--><CONST_INT, 98787>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 33: Token <RPAREN> Lexeme ) found
+
+Line No. 33: Token <ID> Lexeme then found
+
+ Inserted is Scopetable #1 at position 38 0
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
+ [18]--><CONST_INT, 3>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma><ID, then>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 33: Token <ID> Lexeme a found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
+ [18]--><CONST_INT, 3>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma><ID, then>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>
+
+Line No. 33: Token <ID> Lexeme b found
+
+ Scope Table # 1
+ [1]--><ID, aditya>
+ [6]--><CONST_CHAR, '\''>
+ [7]--><CONST_CHAR, '\n'>
+ [12]--><CONST_CHAR, 'a'>
+ [14]--><ID, a>
+ [15]--><ID, b>
+ [16]--><ID, c>
+ [17]--><CONST_INT, 2>
+ [18]--><CONST_INT, 3>
+ [19]--><CONST_INT, 4>
+ [22]--><CONST_INT, 1234567891234567>
+ [28]--><CONST_INT, 00098787>
+ [35]--><CONST_CHAR, '\b'>
+ [38]--><ID, chakma><ID, then>
+ [43]--><CONST_CHAR, 'b'><CONST_CHAR, '\t'>
+ [48]--><CONST_FLOAT, 10.02>

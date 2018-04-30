@@ -29,13 +29,43 @@ char *uprstr(char *s){
 	str[i]='\0';
 	return str;
 }
+char fixL(char *s){
 
-char fixLiteral(char *s){
-	return s[2];
+    char ch;
+	if(strlen(s)>3)
+	switch(s[2]){
+        case 'a': ch='\a';
+            break;
+        case 'b':
+            ch='\b';
+            break;
+        case 'f':
+            ch='\f';
+            break;
+        case 'n':
+            ch='\n';
+            break;
+        case 'r':
+            ch='\r';
+            break;
+        case 't':
+            ch='\t';
+            break;
+        case '0':
+            ch=0;
+            break;
+        case '\'':
+            ch='\'';
+            break;
+        case '\\':
+            ch='\\';
+            break;
+	}else return s[1];
+	return ch;
 }
 
 //For cutting front zeroes and checking integer size
-char *chknum(char *s){
+char *chknum(char *s,bool flag=true){
     char *str=(char*)malloc(sizeof(char)*32);
     int i=0,j=0;
 
@@ -43,8 +73,8 @@ char *chknum(char *s){
     while(s[i]!='\0'){
         str[j]=s[i];
         i++,j++;
-        if(j>9){
-        fprintf(logOut,"Error at line %d, %s oo many digits for an integer\n",nline,yytext);
+        if(j>9 and flag){
+        if(flag)fprintf(logOut,"Error at line %d: so many digits for an integer %s\n",nline,yytext);
         break;
         }
     }
@@ -58,14 +88,14 @@ char *chknum(char *s){
 digit [0-9]
 digits {digit}+
 floatingPoint {digits}\.{digits}
-expoNumber {digits}\.{digits}?[E][+-]?{digits}
+expoNumber {digits}(\.{digits})?[E][+-]?{digits}
 whitespace " "
-newline [\n]
+newline \n
 alphabet [a-z_A-Z]
 alphanumeric {alphabet}({alphabet}|{digit})*
 keyword if|else|for|while|do|break|int|char|float|double|void|return|switch|case|default|continue
 wid {digits}{alphabet}+
-
+ifn {expoNumber}\.{digit}*
 
 %%
 {whitespace}*	{}
@@ -74,36 +104,36 @@ wid {digits}{alphabet}+
 		nline++;
 		}
 {keyword} 	{
-		fprintf(logOut,"Line No. %d: Token <%s> Lexeme %s found\n",nline,uprstr(yytext),yytext);
-		fprintf(tokenOut,"<%s>",uprstr(yytext));
+		fprintf(logOut,"\nLine No. %d: Token <%s> Lexeme %s found\n",nline,uprstr(yytext),yytext); //Adding to log file
+		fprintf(tokenOut,"<%s>",uprstr(yytext)); //Generating token
 		ttokens++;
-		}
-{wid}		{
-		fprintf(logOut,"Error at line %d. Identifier %s defiened wrong\n",nline,yytext);
 		}
 
-{digits}	{
-		fprintf(tokenOut,"<CONST_INT,%s>",chknum(yytext));
-		manage('I',chknum(yytext),"CONST_INT");
+{digits}	{//Integer
+		fprintf(logOut,"\nLine No. %d: Token <CONST_INT> Lexeme %s found\n",nline,yytext); //Adding to log file
+		fprintf(tokenOut,"<CONST_INT,%s>",yytext); //Generating token
+		manage('I',yytext,"CONST_INT"); //Add to Symbol table
 		ttokens++;
 		}
-{floatingPoint} {
-		fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext);
+{floatingPoint} {//Float
+		fprintf(logOut,"\nLine No. %d: Token <CONST_FLOAT> Lexeme %s found\n",nline,yytext); //Adding to log file
+		fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext); //Generating token
+		manage('I',yytext,"CONST_FLOAT"); //Add to Symbol table
 		ttokens++;
 		}
-{expoNumber}	{
-		fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext);
+{expoNumber}	{//Exponential Float
+		fprintf(logOut,"\nLine No. %d: Token <CONST_FLOAT> Lexeme %s found\n",nline,yytext); //Adding to log file
+		fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext); //Generating token
+		//manage('I',yytext,"CONST_FLOAT"); //Add to Symbol table
 		ttokens++;
 		}
-\'([^'\\]|\\['"\\abfnrtv0])\'	{
-				fprintf(tokenOut,"<CONST_CHAR,%c>",fixLiteral(yytext));
+\'([^'\\]|\\['"\\abfnrtv0])\'	{ //Finding character literal
+				
+				fprintf(logOut,"\nLine No. %d: Token <CONST_CHAR> Lexeme %s found\n",nline,yytext); //Adding to log file
+				fprintf(tokenOut,"<CONST_CHAR,%c>",fixL(yytext)); //Generating token
+				manage('I',yytext,"CONST_CHAR"); //Add to Symbol table
 				ttokens++;
 				}
-{alphanumeric}	{
-		fprintf(tokenOut,"<ID,%s>",yytext);
-		ttokens++;
-		}
-
 
 "++"|"--"	fprintf(tokenOut,"<INCOP,%s>",yytext),ttokens++;
 [+-]		fprintf(tokenOut,"<ADDOP,%s>",yytext),ttokens++;
@@ -115,40 +145,71 @@ wid {digits}{alphabet}+
 "&&"|"||"			fprintf(tokenOut,"<LOGICOP,%s>",yytext),ttokens++;
 "&"|"|"|"^"|"<<"|">>"		fprintf(tokenOut,"<BITOP,%s>",yytext),ttokens++;
 "!"		{
+		fprintf(logOut,"\nLine No. %d: Token <NOT> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<NOT,!>");
 		ttokens++;
 		}
 "("		{
+		fprintf(logOut,"\nLine No. %d: Token <LPAREN> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<LPAREN,(>");
 		ttokens++;
 		}
 ")"		{
+		fprintf(logOut,"\nLine No. %d: Token <RPAREN> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<RPAREN,)>");
 		ttokens++;
 		}
 "{"		{
+		fprintf(logOut,"\nLine No. %d: Token <LCUR> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<LCUR,{>");
 		ttokens++;
 		}
 "}"		{
+		fprintf(logOut,"\nLine No. %d: Token <RCUR> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<RCUR,}>");
 		ttokens++;
 		}
 "["		{
+		fprintf(logOut,"\nLine No. %d: Token <LTHIRD> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<LTHIRD,[>");
 		ttokens++;
 		}
 "]"		{
+		fprintf(logOut,"\nLine No. %d: Token <RTHIRD> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<RTHIRD,]>");
 		ttokens++;
 		}
 ","		{
+		fprintf(logOut,"\nLine No. %d: Token <COMMA> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<COMMA,,>");
 		ttokens++;
 		}
 ";"		{
+		fprintf(logOut,"\nLine No. %d: Token <SEMICOLON> Lexeme %s found\n",nline,yytext); //Adding to log file
 		fprintf(tokenOut,"<SEMICOLON,;>");
 		ttokens++;
+		}
+\"((.*\\{newline}.*)*|.*)\"	{
+				fprintf(logOut,"\nLine No. %d: Token <STRING> Lexeme %s found\n",nline,yytext); //Adding to log file
+				//printf("String found: %s\n",yytext);
+				}
+
+\/\/((.*\\{newline}.*)*|.*)	{
+				fprintf(logOut,"\nLine No. %d: Token <COMMENT> Lexeme %s found\n",nline,yytext); //Adding to log file
+				//printf("Single line comment found: %s\n",yytext);
+				}
+
+{alphanumeric}	{
+		fprintf(logOut,"\nLine No. %d: Token <ID> Lexeme %s found\n",nline,yytext); //Adding to log file
+		fprintf(tokenOut,"<ID,%s>",yytext);
+		manage('I',yytext,"ID"); //Add to Symbol table
+		ttokens++;
+		}
+{wid}		{
+		fprintf(logOut,"\nError at line %d. Invalid prefix on ID or invalid suffix on Number %s\n",nline,yytext);
+		}
+{ifn}		{
+		fprintf(logOut,"\nError at line %d. Ill formed Number %s\n",nline,yytext);
 		}
 
 %%

@@ -1,13 +1,32 @@
-aditya chakma if else _0 0989 _a abc_0 0_ 0.9867 986.30E-1243 2467.8327 38.0E29
+aditya chakma
+if
+10.02 0123ebas 1E10.7 123E12 12.34E6
 switch case if continue else return continue
 1234567891234567
 00098787
-
 -
+'a' 'b' '\''
 
+//This is a single line comment
+
+" string"
+"multiline\
+string"
+
+// This is a \
+multiline \
+comment \
+1 \
+2 \
+3
+4
+
+'\t'
 '\n'
-'\0'
 '\b'
+
+
+// this is too
 
 0123abc
 a=b+c;

@@ -5,6 +5,7 @@ class ScopeTable{
 private:
     int tableSize;
     int position;
+    int id;
     //Double pointer. For containing 2D pointer.
     SymbolInfo **HashFile;
 
@@ -13,7 +14,7 @@ private:
         int len=s.length();
         lli index=7;
         for(int i=0;i<len;i++) index=index*31 + s[i];
-        return (int)index%tableSize;
+        return (abs)((int)index%tableSize);
     }
 
 public:
@@ -140,15 +141,38 @@ public:
     }
 
     void Print(){
-        cout<< "Printing Scope Table: "<<endl;
+        //cout<< " Scope Table # "<<id<< "\n"<<endl;
+        fprintf(logOut, "\n Scope Table # %d\n",id);
+        //printf("Scope Table # %d\n",id);
         for(int i=0;i<tableSize;i++){
-
+            //cout<< " ["<<i<< "]-->";
             SymbolInfo *temp=HashFile[i];
 
+            if(temp==0) continue;
+            fprintf(logOut," [%d]-->",i);
+                //printf("[%d]-->",i);
+
+
             while(temp!=0){
-                cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
-                temp=temp->next;
+            //cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
+            char *s1=new char[sizeof(temp->symbol_type) + 1];
+            strcpy(s1,temp->symbol_type.c_str());
+            char *s2=new char[sizeof(temp->symbol_name) + 1];
+            strcpy(s2,temp->symbol_name.c_str());
+            fprintf(logOut,"<%s, %s>",s1,s2);
+            //printf("<%s, %s>",s1,s2);
+            temp=temp->next;
             }
+           //cout<<endl;
+            fprintf(logOut,"\n");
         }
+    }
+
+    void setId(int x){
+        id=x;
+    }
+
+    int getId(){
+        return id;
     }
 };
