@@ -5,7 +5,6 @@ class ScopeTable{
 private:
     int tableSize;
     int position;
-    int id;
     //Double pointer. For containing 2D pointer.
     SymbolInfo **HashFile;
 
@@ -33,7 +32,7 @@ public:
     }
 
     //Inserting into Hash table
-    bool Insert(string symbol_type,string symbol_name){
+    bool Insert(string symbol_name,string symbol_type){
         //If variable with the same name in the current scope, then return false
         if(Lookup(symbol_name)!=0) return false;
 
@@ -54,11 +53,11 @@ public:
 
             //Insert new item in the chain
             temp->next=newSymbol;
-            newSymbol->setSymbol(symbol_type,symbol_name);
+            newSymbol->setSymbol(symbol_name,symbol_type);
             newSymbol->prev=temp;
         }else{ //If empty Hash table, then allocate memory and put symbol info
             HashFile[index]=new SymbolInfo;
-            HashFile[index]->setSymbol(symbol_type,symbol_name);
+            HashFile[index]->setSymbol(symbol_name,symbol_type);
         }
         return true;
     }
@@ -141,35 +140,15 @@ public:
     }
 
     void Print(){
-        //cout<< " Scope Table # "<<id<< "\n"<<endl;
-	fprintf(logOut," Scope Table # %d\n",id);
+        cout<< "Printing Scope Table: "<<endl;
         for(int i=0;i<tableSize;i++){
-	    SymbolInfo *temp=HashFile[i];
-	    if(temp==0) continue;
-            //cout<< " ["<<i<< "]-->";
-	    fprintf(logOut," [%d]-->",i);
-            
+
+            SymbolInfo *temp=HashFile[i];
 
             while(temp!=0){
-		const char *sn=new char[temp->symbol_name.length()+1];
-		sn=temp->symbol_name.c_str();
-		const char *st=new char[temp->symbol_type.length()+1];
-		st=temp->symbol_type.c_str();
-	        fprintf(logOut,"<%s, %s>",sn,st);
-               // cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
+                cout<<temp->symbol_name<< " "<<temp->symbol_type<<endl;
                 temp=temp->next;
-		//free(sn);
-		//free(st);
             }
-            fprintf(logOut,"\n");
         }
-    }
-
-    void setId(int x){
-        id=x;
-    }
-
-    int getId(){
-        return id;
     }
 };

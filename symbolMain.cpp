@@ -1,6 +1,7 @@
 #include "1505120_Symbol_Table.cpp"
 
 void manage(char ch,string en1,string en2="\0"){
+    int hashSize;
 
 	switch(ch){
             case 'I':
@@ -18,7 +19,7 @@ void manage(char ch,string en1,string en2="\0"){
             case 'L':
                 {
                     //cin>>en1;
-                    
+
                     if(st.Lookup(en1)!=0) cout<< "\n Found in ScopeTable# "<<iTable<< " at position "<<iIndex<<","<<iPosition<<endl;
                     else cout<< "Not found!"<<endl;
                     break;
@@ -52,7 +53,7 @@ void manage(char ch,string en1,string en2="\0"){
         }
 
 }
-/*
+
 int main(){
     freopen("Test.txt","r",stdin);
 
@@ -73,7 +74,7 @@ int main(){
                 {
                     cin>>en1>>en2;
                     if(st.Insert(en1,en2))
-                        cout<< "\n Inserted in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
+                        cout<< " Inserted in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
                     else
                         cout<< "Error! already exist"<<endl;
                     break;
@@ -82,7 +83,7 @@ int main(){
                 {
                     cin>>en1;
                     //SymbolInfo *te;
-                    if(st.Lookup(en1)!=0) cout<< "\n Found in ScopeTable# "<<iTable<< " at position "<<iIndex<<","<<iPosition<<endl;
+                    if(st.Lookup(en1)!=0) cout<< "Found in ScopeTable# "<<iTable<< "at position "<<iIndex<<","<<iPosition<<endl;
                     else cout<< "Not found!"<<endl;
                     break;
                 }
@@ -90,9 +91,9 @@ int main(){
                 {
                     cin>>en1;
                     if(st.Remove(en1)){
-                        cout<< "\n Found in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
+                        cout<< "Found in ScopeTable# "<<st.getTableNumber()<< "at position "<<iIndex<< ", "<<iPosition<<endl;
                     }
-                    else cout<< "\n Not found!"<<endl;
+                    else cout<< "Not found!"<<endl;
                     break;
                 }
             case 'P':
@@ -120,5 +121,5 @@ int main(){
 
     return 0;
 
-}*/
+}
 

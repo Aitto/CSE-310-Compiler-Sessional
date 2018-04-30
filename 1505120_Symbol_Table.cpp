@@ -21,7 +21,6 @@ public:
             head->next=0;
             head->prev=0;
             tail=head;
-            head->setId(tableNumber);
         }
         else{
             ScopeTable *newScope=new ScopeTable(hashSize);
@@ -29,7 +28,6 @@ public:
             newScope->prev=tail;
             tail=newScope;
             newScope->next=0;
-            tail->setId(tableNumber);
         }
     }
 
@@ -37,23 +35,20 @@ public:
         tableNumber--;
         if(tail!=0){
             if(tail->prev!=0){
-                ScopeTable *temp=tail->prev;
-                free(tail);
-                temp->next=0;
-                tail=temp;
+                tail->prev->next=0;
+                tail=tail->prev;
                 //free(tail);
             }else{
-                ScopeTable *temp=tail;
                 head=0;
                 tail=0;
-                free(temp);
+                free(tail);
             }
         }
     }
 
     bool Insert(string symbol_name,string symbol_type){
         if(tail!=0){
-            return tail->Insert(symbol_type,symbol_name);
+            return tail->Insert(symbol_name,symbol_type);
         }
         return 0;
     }
@@ -84,7 +79,7 @@ public:
     }
 
     void PrintCurrent(){
-        //cout<< "Printing Current Scope Table: \n"<<endl;
+        cout<< "Printing Current Scope Table: "<<endl;
 
         if(tail!=0){
             tail->Print();
@@ -92,7 +87,7 @@ public:
     }
 
     void PrintAll(){
-        cout<< "Printing All Scope table: \n"<<endl;
+        cout<< "Printing All Scope table: "<<endl;
 
         ScopeTable *temp=head;
 
@@ -103,9 +98,8 @@ public:
             temp=temp->next;
         }
     }
-
     int getTableNumber(){
-        return tail->getId();
+        return tableNumber;
     }
 };
 

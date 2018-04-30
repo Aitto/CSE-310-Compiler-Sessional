@@ -13,7 +13,7 @@ using namespace std;
 int iPosition;
 int iIndex;
 int iTable;
-int hashSize;
+
 
 FILE *fin;
 FILE *tokenOut;
