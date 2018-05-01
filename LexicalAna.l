@@ -96,6 +96,7 @@ alphanumeric {alphabet}({alphabet}|{digit})*
 keyword if|else|for|while|do|break|int|char|float|double|void|return|switch|case|default|continue
 wid {digits}{alphabet}+
 ifn {expoNumber}\.{digit}*
+tmdp {floatingPoint}(\.{digit}*)*
 
 %%
 {whitespace}*	{}
@@ -127,6 +128,18 @@ ifn {expoNumber}\.{digit}*
 		//manage('I',yytext,"CONST_FLOAT"); //Add to Symbol table
 		ttokens++;
 		}
+
+\'(\n|[^'\n]*\n)	{ //Unfinished character literal like 'b or 'bbbbasd
+			fprintf(logOut,"\nError at line %d.Unfinished character %s\n",nline,yytext),terror++;
+			//cout<<"Unfinished character literal "<<yytext<<endl; 
+			}
+
+
+\'([^'\\\n][^'\n]+|\\[^'\n][^'\n]+)\'	{ //Multichracter constant like 'abc' '\nb' 'b\n'
+					fprintf(logOut,"\nError at line %d. Multicharacter constant error for character sequence %s\n",nline,yytext);
+					//cout<<"detected "<<yytext<<endl;
+					}
+
 \'([^'\\]|\\['"\\abfnrtv0])\'	{ //Finding character literal
 				
 				fprintf(logOut,"\nLine No. %d: Token <CONST_CHAR> Lexeme %s found\n",nline,yytext); //Adding to log file
@@ -134,6 +147,7 @@ ifn {expoNumber}\.{digit}*
 				manage('I',yytext,"CONST_CHAR"); //Add to Symbol table
 				ttokens++;
 				}
+
 
 "++"|"--"	fprintf(tokenOut,"<INCOP,%s>",yytext),ttokens++;
 [+-]		fprintf(tokenOut,"<ADDOP,%s>",yytext),ttokens++;
@@ -189,15 +203,31 @@ ifn {expoNumber}\.{digit}*
 		fprintf(tokenOut,"<SEMICOLON,;>");
 		ttokens++;
 		}
-\"((.*\\{newline}.*)*|.*)\"	{
+\"([^"\\]*\n[^"\\]*)\"	{//Ill formed string
+			fprintf(logOut,"\nError ad line %d. Ill formed string %s. Missing \\ \n",nline,yytext),terror++;
+			//cout<< "Ill formed string: "<<yytext<<endl;
+			}
+\"([^"]*|[^"]*\\\n?[^"]*)	{//Unfinished String
+				//\"([^"]*|[^"]*\\\n?[^"]*)
+				fprintf(logOut,"\nError at line %d. Unfinished string %s\n",nline,yytext),terror++;
+				//cout<< "Unfinished string "<<yytext<<endl;
+				}
+\"([^"]*\\\n?[^"]*|[^"]*)\"	{//String \"((.*\\{newline}.*)*|.*)\"
+				// "([^"]*\\\n?[^"]*|[^"]*)\"
 				fprintf(logOut,"\nLine No. %d: Token <STRING> Lexeme %s found\n",nline,yytext); //Adding to log file
 				//printf("String found: %s\n",yytext);
 				}
-
-\/\/((.*\\{newline}.*)*|.*)	{
+\/\/((.*\\{newline}?.*)*|.*)	{//single or \
+				multilined comment
 				fprintf(logOut,"\nLine No. %d: Token <COMMENT> Lexeme %s found\n",nline,yytext); //Adding to log file
 				//printf("Single line comment found: %s\n",yytext);
 				}
+\/\*([^*]|\*+[^/*])*\*+\/	{ //Multilined comment
+				fprintf(logOut,"\nToken <COMMENT> Lexeme %s found\n",yytext);
+				//cout<<"Multilined comment found! "<<yytext<<endl; 
+				 // \/\*([^*])\*\/
+				}
+
 
 {alphanumeric}	{
 		fprintf(logOut,"\nLine No. %d: Token <ID> Lexeme %s found\n",nline,yytext); //Adding to log file
@@ -205,12 +235,18 @@ ifn {expoNumber}\.{digit}*
 		manage('I',yytext,"ID"); //Add to Symbol table
 		ttokens++;
 		}
-{wid}		{
-		fprintf(logOut,"\nError at line %d. Invalid prefix on ID or invalid suffix on Number %s\n",nline,yytext);
+{wid}		{//Wrong identifier
+		fprintf(logOut,"\nError at line %d. Invalid prefix on ID or invalid suffix on Number %s\n",nline,yytext),terror++;
 		}
-{ifn}		{
-		fprintf(logOut,"\nError at line %d. Ill formed Number %s\n",nline,yytext);
+{ifn}		{//Ill formed number
+		fprintf(logOut,"\nError at line %d. Ill formed Number %s\n",nline,yytext),terror++;
 		}
+{tmdp}		{//too many decimal points
+		fprintf(logOut,"\nError at line %d. Too many decimal points for %s\n",nline,yytext),terror++;
+		}
+.	{
+	fprintf(logOut,"\nError at line %d. unrecognized character %s\n",nline,yytext),terror++;
+	}
 
 %%
 
@@ -236,7 +272,9 @@ int main(int argc,char *argv[]){
 	yyin= fin;
 	yylex();
 	printf("newines: %d\n",nline);
-
+	
+	fprintf(logOut,"Total lines: %d\n",nline);
+	fprintf(logOut,"Total errors: %d\n",terror);
 	fclose(fin);
 	fclose(tokenOut);
 	fclose(logOut);

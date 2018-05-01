@@ -9,9 +9,9 @@ void manage(char ch,string en1,string en2="\0"){
                     //cin>>en1>>en2;
                     if(st.Insert(en1,en2))
                         //cout<< "\n Inserted in ScopeTable# "<<st.getTableNumber()<< " at position "<<iIndex<< ", "<<iPosition<<endl;
-			fprintf(logOut,"\n Inserted is Scopetable #%d at position %d %d\n",st.getTableNumber(),iIndex,iPosition);
-                    else
-                        cout<< "Error! "<<en1<<" already exist"<<endl;
+			//fprintf(logOut,"\n Inserted is Scopetable #%d at position %d %d\n",st.getTableNumber(),iIndex,iPosition);
+                   // else
+                        //cout<< "Error! "<<en1<<" already exist"<<endl;
 		    st.PrintCurrent();
 
                     break;

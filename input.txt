@@ -1,39 +1,26 @@
-aditya chakma
-if
-10.02 0123ebas 1E10.7 123E12 12.34E6
-switch case if continue else return continue
-1234567891234567
-00098787
--
-'a' 'b' '\''
-
-//This is a single line comment
-
-" string"
-"multiline\
+aditya
+'a'
+char
+// single line comment
+// multiline \
+coment
+/* anothe multilined
+comment */
+12345
+123.456
+12E12
+12.12E12
+12.12E1.2
+1.2.3.4
+"an single \\ lined sring"
+" an \\\\\
+multilined String"
+"an 
 string"
-
-// This is a \
-multiline \
-comment \
-1 \
-2 \
-3
-4
-
-'\t'
-'\n'
-'\b'
+\ adsfhja
+"another \
+string
+'a
+'b'
 
 
-// this is too
-
-0123abc
-a=b+c;
-a=b/c;
-a++;
---b;
-a<b;
-a<<2
-a^2
-if(2&&3) then a|b
