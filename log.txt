@@ -1,70 +1,38 @@
 
-Line No. 1: Token <ID> Lexeme aditya found
+Error at line 1. Too many decimal points for 1.2.345
+
+Error at line 2. Ill formed Number 1E10.7
+
+Error at line 3. Invalid prefix on ID or invalid suffix on Number 12abcd
+
+Error at line 4. Multicharacter constant error for character sequence 'ab'
+
+Error at line 5.Unterminated character literal 'a
+
+
+Error at line 6.Unterminated character literal '
+
+
+Error at line 7. Multicharacter constant error for character sequence 'ab cd'
+
+Error at line 8.Unterminated character literal '\'
+
+Error at line 9: Empty character literal ''
+
+Error at line 10. Unfinished string "abcd
+
+Error at line 11. Unfinished string "abcd\
+efgh
+
+Line No. 13: Token <ID> Lexeme ijk found
 
  Scope Table # 1
- [1]--><ID, aditya>
+ [35]--><ID, ijk>
 
-Line No. 2: Token <CONST_CHAR> Lexeme 'a' found
+Error at line 13. Unfinished string "
 
- Scope Table # 1
- [1]--><ID, aditya>
- [12]--><CONST_CHAR, 'a'>
+Error at line 14. Unfinished comment /**abc
+def
 
-Line No. 3: Token <CHAR> Lexeme char found
-
-Line No. 4: Token <COMMENT> Lexeme // single line comment found
-
-Line No. 5: Token <COMMENT> Lexeme // multiline \
-coment found
-
-Token <COMMENT> Lexeme /* anothe multilined
-comment */ found
-
-Line No. 7: Token <CONST_INT> Lexeme 12345 found
-
- Scope Table # 1
- [1]--><ID, aditya>
- [12]--><CONST_CHAR, 'a'><CONST_INT, 12345>
-
-Line No. 8: Token <CONST_FLOAT> Lexeme 123.456 found
-
- Scope Table # 1
- [1]--><ID, aditya>
- [12]--><CONST_CHAR, 'a'><CONST_INT, 12345>
- [42]--><CONST_FLOAT, 123.456>
-
-Line No. 9: Token <CONST_FLOAT> Lexeme 12E12 found
-
-Line No. 10: Token <CONST_FLOAT> Lexeme 12.12E12 found
-
-Error at line 11. Ill formed Number 12.12E1.2
-
-Error at line 12. Too many decimal points for 1.2.3.4
-
-Line No. 13: Token <STRING> Lexeme "an single \\ lined sring" found
-
-Line No. 14: Token <STRING> Lexeme " an \\\\\
-multilined String" found
-
-Error ad line 15. Ill formed string "an 
-string". Missing \ 
-
-Error at line 16. unrecognized character \
-
-Line No. 16: Token <ID> Lexeme adsfhja found
-
- Scope Table # 1
- [1]--><ID, aditya>
- [12]--><CONST_CHAR, 'a'><CONST_INT, 12345>
- [28]--><ID, adsfhja>
- [42]--><CONST_FLOAT, 123.456>
-
-Error at line 17. Unfinished string "another \
-string
-'a
-'b'
-
-
-
-Total lines: 17
-Total errors: 5
+Total lines: 15
+Total errors: 13

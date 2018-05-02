@@ -1,26 +1,15 @@
-aditya
-'a'
-char
-// single line comment
-// multiline \
-coment
-/* anothe multilined
-comment */
-12345
-123.456
-12E12
-12.12E12
-12.12E1.2
-1.2.3.4
-"an single \\ lined sring"
-" an \\\\\
-multilined String"
-"an 
-string"
-\ adsfhja
-"another \
-string
+1.2.345
+1E10.7
+12abcd
+'ab'
 'a
-'b'
-
-
+'
+'ab cd'
+'\'
+''
+"abcd
+"abcd\
+efgh
+ijk"
+/**abc
+def
