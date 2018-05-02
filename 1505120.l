@@ -29,6 +29,52 @@ char *uprstr(char *s){
 	str[i]='\0';
 	return str;
 }
+
+char * fixS(char *s){
+//abfnrt0\'
+
+    char *ans=new char[sizeof(s) +1];
+    int i=0,j=0;
+
+    while(s[j]!='\0'){
+        if(s[j]=='\\'){
+            j++;
+            switch(s[j]){
+                case 'a':
+                ans[i]='\a';
+                break;
+                case 'b':
+                ans[i]='\b';
+                break;
+                case 'f':
+                ans[i]='\f';
+                break;
+                case 'n':
+                ans[i]='\n';
+                break;
+                case 'r':
+                ans[i]='\r';
+                break;
+                case 't':
+                ans[i]='\t';
+                break;
+                case '\n':
+                break;
+                default:
+                ans[i]=s[j];
+
+            }i++,j++;
+            continue;
+        }
+        ans[i]=s[j];
+        i++;
+        j++;
+    }
+
+    ans[i]='\0';
+    return ans;
+}
+
 char fixL(char *s){
 
     char ch;
@@ -100,12 +146,14 @@ tmdp {floatingPoint}(\.{digit}*)*
 unfcom \/\*([^*]|\*+[^/*])*
 mlcom \/\*([^*]|\*+[^/*])*\*+\/
 slcom \/\/((.*\\{newline}?.*)*|.*)
-str \"(([^\\\n"]*\\\n?[^"\\\n]*)*|[^"\\\n]*)\"
-unfstr \"([^"\\\n]*|[^"\\\n]*\\\n?[^"\\\n]*)
+str \"(([^\\\n"]*(\\+\n?)?)*)\" 
+unfstr \"(([^"\\\n]*(\\+\n?)?)*)
 ifstr \"([^"\\]*\n[^"\\]*)\"
 
 %%
-({whitespace}*|\t*)	{}
+({whitespace}*|\t*)	{//str \"(([^\\\n"]*\\+\n?[^"\\\n]*)*|[^"\\\n]*)\" 
+			//unfstr \"([^"\n]*|([^"\\\n]*\\+\n?[^"]*)*)
+			}
 {newline}	{
 		//if(!ttokens%5)fprintf(tokenOut,"\n");
 		nline++;
@@ -239,7 +287,7 @@ ifstr \"([^"\\]*\n[^"\\]*)\"
 
 {unfstr}	{//Unfinished String
 		//\"([^"]*|[^"]*\\\n?[^"]*)
-		fprintf(logOut,"\nError at line %d. Unfinished string %s\n",nline,yytext),terror++;
+		fprintf(logOut,"\nError at line %d. Missing terminating character %s\n",nline,yytext),terror++;
 		int temp=strlen(yytext);
 		for(int i=0;i<temp;i++) if(yytext[i]=='\n') nline++;
 		//cout<< "Unfinished string "<<yytext<<endl;
@@ -247,6 +295,7 @@ ifstr \"([^"\\]*\n[^"\\]*)\"
 {str}		{//String \"((.*\\{newline}.*)*|.*)\"
 		// "([^"]*\\\n?[^"]*|[^"]*)\"
 		fprintf(logOut,"\nLine No. %d: Token <STRING> Lexeme %s found\n",nline,yytext); //Adding to log file
+		fprintf(tokenOut,"<STRING, %s>",fixS(yytext));
 		int temp=strlen(yytext);
 		for(int i=0;i<temp;i++) if(yytext[i]=='\n') nline++;
 		//printf("String found: %s\n",yytext);

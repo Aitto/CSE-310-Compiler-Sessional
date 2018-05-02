@@ -1,1 +1,4 @@
-<ID,ijk>
+<CONST_CHAR,
+><STRING, "Tis is a string \\ string"><STRING, "This is\\
+also
+><ID,rouf><ID,abdur><STRING, "it is"><ID,abc>

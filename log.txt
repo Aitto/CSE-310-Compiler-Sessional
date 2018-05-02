@@ -1,38 +1,43 @@
 
-Error at line 1. Too many decimal points for 1.2.345
-
-Error at line 2. Ill formed Number 1E10.7
-
-Error at line 3. Invalid prefix on ID or invalid suffix on Number 12abcd
-
-Error at line 4. Multicharacter constant error for character sequence 'ab'
-
-Error at line 5.Unterminated character literal 'a
-
-
-Error at line 6.Unterminated character literal '
-
-
-Error at line 7. Multicharacter constant error for character sequence 'ab cd'
-
-Error at line 8.Unterminated character literal '\'
-
-Error at line 9: Empty character literal ''
-
-Error at line 10. Unfinished string "abcd
-
-Error at line 11. Unfinished string "abcd\
-efgh
-
-Line No. 13: Token <ID> Lexeme ijk found
+ Line No. 1: Token <CONST_CHAR> Lexeme '\n' found
 
  Scope Table # 1
- [35]--><ID, ijk>
+ [7]--><CONST_CHAR, '\n'>
 
-Error at line 13. Unfinished string "
+Line No. 2: Token <STRING> Lexeme "Tis is a string \\\\\ string" found
 
-Error at line 14. Unfinished comment /**abc
-def
+Line No. 4: Token <STRING> Lexeme "This is\\\\
+also\n\
+an string " found
 
-Total lines: 15
-Total errors: 13
+Error at line 8. Missing terminating character "this is not
+
+Error at line 9. Missing terminating character "this is not\
+too
+
+Line No. 12: Token <ID> Lexeme rouf found
+
+ Scope Table # 1
+ [7]--><CONST_CHAR, '\n'>
+ [21]--><ID, rouf>
+
+Line No. 13: Token <ID> Lexeme abdur found
+
+ Scope Table # 1
+ [3]--><ID, abdur>
+ [7]--><CONST_CHAR, '\n'>
+ [21]--><ID, rouf>
+
+Line No. 15: Token <STRING> Lexeme "it is" found
+
+Line No. 16: Token <ID> Lexeme abc found
+
+ Scope Table # 1
+ [3]--><ID, abdur>
+ [7]--><CONST_CHAR, '\n'>
+ [21]--><ID, rouf>
+ [41]--><ID, abc>
+
+Error at line 16. Missing terminating character "
+Total lines: 16
+Total errors: 3

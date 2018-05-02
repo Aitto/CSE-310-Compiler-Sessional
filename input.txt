@@ -1,15 +1,16 @@
-1.2.345
-1E10.7
-12abcd
-'ab'
-'a
-'
-'ab cd'
-'\'
-''
-"abcd
-"abcd\
-efgh
-ijk"
-/**abc
-def
+'\n'
+"Tis is a string \\\\\ string"
+
+"This is\\\\
+also\n\
+an string "
+
+"this is not
+"this is not\
+too
+
+rouf
+abdur
+
+"it is"
+abc "
