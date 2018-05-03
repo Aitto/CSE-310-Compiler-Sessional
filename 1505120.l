@@ -157,7 +157,7 @@ alphabet [a-z_A-Z]
 alphanumeric {alphabet}({alphabet}|{digit})*
 keyword if|else|for|while|do|break|int|char|float|double|void|return|switch|case|default|continue
 wid {digits}{alphabet}+
-ifn {expoNumber}\.{digit}*
+ifn {expoNumber}(\.{digit}*)+
 tmdp {floatingPoint}(\.{digit}*)*
 unfcom \/\*([^*]|\*+[^/*])*
 mlcom \/\*([^*]|\*+[^/*])*\*+\/
@@ -172,6 +172,7 @@ ifstr \"([^"\\]*\n[^"\\]*)\"
 			//\"(([^\\\n"]*(\\+\n?)?)*)\"
 			// \"(([^"\\\n]*((\\\\)*\n?)?)*)
 /*
+ifn ({expoNumber}(\.{digit}*)+)|({digits}(\.?{digits})?E)
 str \"([^\\\n"]*|\\(\\\\)*\"|\\(\\\\)*\n|\\[^\\\n"]*)*\"
 unfstr \"([^\\\n"]*|\\(\\\\)*\"|(\\\\)+\n|\\[^\\\n"]*)*
 str \"(\\*[^\\\n"]*|\\(\\\\)*(\"|\n))*\"

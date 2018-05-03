@@ -1,20 +1,46 @@
 
-Line No. 1: Token <STRING> Lexeme "abc" found
+Line No. 1: Token <CONST_INT> Lexeme 123456 found
 
-Line No. 2: Token <STRING> Lexeme "abc \\\\ \t \\t def\" " found
+ Scope Table # 1
+ [16]--><CONST_INT, 123456>
 
-Error at line 3. Missing terminating character "abc \\\\ \t \\t def\" \"
+Line No. 2: Token <CONST_FLOAT> Lexeme 123.456 found
 
-Error at line 4. Missing terminating character "abc
+ Scope Table # 1
+ [16]--><CONST_INT, 123456>
+ [42]--><CONST_FLOAT, 123.456>
 
-Line No. 5: Token <STRING> Lexeme "" found
+Line No. 3: Token <CONST_FLOAT> Lexeme 1E+445 found
 
-Line No. 6: Token <STRING> Lexeme "aditya \
-chakma" found
+Line No. 4: Token <CONST_FLOAT> Lexeme 1E-114 found
 
-Error at line 8. Missing terminating character "aditya \\
-chakma
+Line No. 5: Token <CONST_FLOAT> Lexeme 1.5E6 found
 
-Error at line 9. Missing terminating character "
-Total lines: 9
-Total errors: 4
+Error at line 6. Too many decimal points for 1.2.3
+
+Error at line 7. Ill formed Number 12.45E3.4
+
+Error at line 8. Ill formed Number 13E456.5.6
+
+Error at line 9. Invalid prefix on ID or invalid suffix on Number 2E
+
+Error at line 9. unrecognized character .
+
+Line No. 9: Token <CONST_INT> Lexeme 4 found
+
+ Scope Table # 1
+ [16]--><CONST_INT, 123456>
+ [19]--><CONST_INT, 4>
+ [42]--><CONST_FLOAT, 123.456>
+
+Error at line 10. Invalid prefix on ID or invalid suffix on Number 12E
+
+Line No. 11: Token <ID> Lexeme E45 found
+
+ Scope Table # 1
+ [11]--><ID, E45>
+ [16]--><CONST_INT, 123456>
+ [19]--><CONST_INT, 4>
+ [42]--><CONST_FLOAT, 123.456>
+Total lines: 12
+Total errors: 6
