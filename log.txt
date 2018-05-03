@@ -1,43 +1,20 @@
 
- Line No. 1: Token <CONST_CHAR> Lexeme '\n' found
+Line No. 1: Token <STRING> Lexeme "abc" found
 
- Scope Table # 1
- [7]--><CONST_CHAR, '\n'>
+Line No. 2: Token <STRING> Lexeme "abc \\\\ \t \\t def\" " found
 
-Line No. 2: Token <STRING> Lexeme "Tis is a string \\\\\ string" found
+Error at line 3. Missing terminating character "abc \\\\ \t \\t def\" \"
 
-Line No. 4: Token <STRING> Lexeme "This is\\\\
-also\n\
-an string " found
+Error at line 4. Missing terminating character "abc
 
-Error at line 8. Missing terminating character "this is not
+Line No. 5: Token <STRING> Lexeme "" found
 
-Error at line 9. Missing terminating character "this is not\
-too
+Line No. 6: Token <STRING> Lexeme "aditya \
+chakma" found
 
-Line No. 12: Token <ID> Lexeme rouf found
+Error at line 8. Missing terminating character "aditya \\
+chakma
 
- Scope Table # 1
- [7]--><CONST_CHAR, '\n'>
- [21]--><ID, rouf>
-
-Line No. 13: Token <ID> Lexeme abdur found
-
- Scope Table # 1
- [3]--><ID, abdur>
- [7]--><CONST_CHAR, '\n'>
- [21]--><ID, rouf>
-
-Line No. 15: Token <STRING> Lexeme "it is" found
-
-Line No. 16: Token <ID> Lexeme abc found
-
- Scope Table # 1
- [3]--><ID, abdur>
- [7]--><CONST_CHAR, '\n'>
- [21]--><ID, rouf>
- [41]--><ID, abc>
-
-Error at line 16. Missing terminating character "
-Total lines: 16
-Total errors: 3
+Error at line 9. Missing terminating character "
+Total lines: 9
+Total errors: 4

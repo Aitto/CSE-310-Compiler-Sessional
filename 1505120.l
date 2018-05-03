@@ -42,28 +42,42 @@ char * fixS(char *s){
             switch(s[j]){
                 case 'a':
                 ans[i]='\a';
+		i++,j++;
                 break;
                 case 'b':
                 ans[i]='\b';
+		i++,j++;
                 break;
                 case 'f':
                 ans[i]='\f';
+		i++,j++;
                 break;
                 case 'n':
                 ans[i]='\n';
+		i++,j++;
                 break;
+		case '0':
+		//ans[i]='\\',i++;
+		ans[i]=27;
+		i++,j++;
+		break;
                 case 'r':
                 ans[i]='\r';
+		i++,j++;
                 break;
                 case 't':
                 ans[i]='\t';
+		i++,j++;
                 break;
                 case '\n':
+		ans[i]=' ';
+		i++,j++;
                 break;
                 default:
                 ans[i]=s[j];
+		i++,j++;
 
-            }i++,j++;
+            }//i++,j++;
             continue;
         }
         ans[i]=s[j];
@@ -98,7 +112,7 @@ char fixL(char *s){
             ch='\t';
             break;
         case '0':
-            ch=0;
+            ch=1;
             break;
         case '\'':
             ch='\'';
@@ -106,6 +120,8 @@ char fixL(char *s){
         case '\\':
             ch='\\';
             break;
+	default:
+	    ch=s[2];
 	}else return s[1];
 	return ch;
 }
@@ -146,13 +162,21 @@ tmdp {floatingPoint}(\.{digit}*)*
 unfcom \/\*([^*]|\*+[^/*])*
 mlcom \/\*([^*]|\*+[^/*])*\*+\/
 slcom \/\/((.*\\{newline}?.*)*|.*)
-str \"(([^\\\n"]*(\\+\n?)?)*)\" 
-unfstr \"(([^"\\\n]*(\\+\n?)?)*)
+str \"([^\\\n"]|\\*[^\\\n"]|\\(\\\\)*(\"|\n))*\"
+unfstr \"([^\\\n"]|\\*[^\\\n"]|\\(\\\\)*(\"|\n)|(\\\\)+\n)*
 ifstr \"([^"\\]*\n[^"\\]*)\"
 
 %%
 ({whitespace}*|\t*)	{//str \"(([^\\\n"]*\\+\n?[^"\\\n]*)*|[^"\\\n]*)\" 
 			//unfstr \"([^"\n]*|([^"\\\n]*\\+\n?[^"]*)*)
+			//\"(([^\\\n"]*(\\+\n?)?)*)\"
+			// \"(([^"\\\n]*((\\\\)*\n?)?)*)
+/*
+str \"([^\\\n"]*|\\(\\\\)*\"|\\(\\\\)*\n|\\[^\\\n"]*)*\"
+unfstr \"([^\\\n"]*|\\(\\\\)*\"|(\\\\)+\n|\\[^\\\n"]*)*
+str \"(\\*[^\\\n"]*|\\(\\\\)*(\"|\n))*\"
+unfstr \"(\\*[^\\\n"]*|\\(\\\\)*(\"|\n))*
+*/
 			}
 {newline}	{
 		//if(!ttokens%5)fprintf(tokenOut,"\n");
@@ -200,9 +224,10 @@ ifstr \"([^"\\]*\n[^"\\]*)\"
 					//cout<<"detected "<<yytext<<endl;
 					}
 
-\'([^'\\\n]|\\['"\\abfnrtv0])\'	{ //Finding character literal
+\'([^'\\\n]|\\['"\\a-zA-Z0])\'	{ //Finding character literal
 				
 				fprintf(logOut,"\n Line No. %d: Token <CONST_CHAR> Lexeme %s found\n",nline,yytext); //Adding to log file
+				//fwrite(logOut,sizeof("<CONST_CHAR,%c>"),
 				fprintf(tokenOut,"<CONST_CHAR,%c>",fixL(yytext)); //Generating token
 				manage('I',yytext,"CONST_CHAR"); //Add to Symbol table
 				ttokens++;
@@ -284,7 +309,6 @@ ifstr \"([^"\\]*\n[^"\\]*)\"
 		fprintf(tokenOut,"<SEMICOLON,;>");
 		ttokens++;
 		}
-
 {unfstr}	{//Unfinished String
 		//\"([^"]*|[^"]*\\\n?[^"]*)
 		fprintf(logOut,"\nError at line %d. Missing terminating character %s\n",nline,yytext),terror++;
@@ -292,6 +316,7 @@ ifstr \"([^"\\]*\n[^"\\]*)\"
 		for(int i=0;i<temp;i++) if(yytext[i]=='\n') nline++;
 		//cout<< "Unfinished string "<<yytext<<endl;
 		}
+
 {str}		{//String \"((.*\\{newline}.*)*|.*)\"
 		// "([^"]*\\\n?[^"]*|[^"]*)\"
 		fprintf(logOut,"\nLine No. %d: Token <STRING> Lexeme %s found\n",nline,yytext); //Adding to log file
@@ -357,7 +382,7 @@ int main(int argc,char *argv[]){
 	
 	st.enterScope(hashSize);
 	
-	tokenOut=fopen("token.txt","w");
+	tokenOut=fopen("token.txt","wb");
 	logOut=fopen("log.txt","w");
 	
 	yyin= fin;

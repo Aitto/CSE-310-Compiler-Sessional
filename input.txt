@@ -1,16 +1,9 @@
-'\n'
-"Tis is a string \\\\\ string"
-
-"This is\\\\
-also\n\
-an string "
-
-"this is not
-"this is not\
-too
-
-rouf
-abdur
-
-"it is"
-abc "
+"abc"
+"abc \\\\ \t \\t def\" "
+"abc \\\\ \t \\t def\" \"
+"abc
+""
+"aditya \
+chakma"
+"aditya \\
+chakma"
