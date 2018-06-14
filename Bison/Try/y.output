@@ -1,0 +1,304 @@
+Grammar
+
+    0 $accept: input $end
+
+    1 input: %empty
+    2      | input line
+
+    3 line: NEWLINE
+    4     | expr NEWLINE
+    5     | key NEWLINE
+
+    6 key: CONST_KEY
+    7    | ID
+
+    8 expr: expr PLUS term
+    9     | expr MINUS term
+   10     | term
+
+   11 term: term ASTERISK factor
+   12     | term SLASH factor
+   13     | factor
+
+   14 factor: LPAREN expr RPAREN
+   15       | CFLOAT
+   16       | CINT
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+NEWLINE (258) 3 4 5
+PLUS (259) 8
+MINUS (260) 9
+SLASH (261) 12
+ASTERISK (262) 11
+LPAREN (263) 14
+RPAREN (264) 14
+ID (265) 7
+CONST_KEY (266) 6
+CFLOAT (267) 15
+CINT (268) 16
+
+
+Nonterminals, with rules where they appear
+
+$accept (14)
+    on left: 0
+input (15)
+    on left: 1 2, on right: 0 2
+line (16)
+    on left: 3 4 5, on right: 2
+key (17)
+    on left: 6 7, on right: 5
+expr (18)
+    on left: 8 9 10, on right: 4 8 9 14
+term (19)
+    on left: 11 12 13, on right: 8 9 10 11 12
+factor (20)
+    on left: 14 15 16, on right: 11 12 13
+
+
+State 0
+
+    0 $accept: . input $end
+
+    $default  reduce using rule 1 (input)
+
+    input  go to state 1
+
+
+State 1
+
+    0 $accept: input . $end
+    2 input: input . line
+
+    $end       shift, and go to state 2
+    NEWLINE    shift, and go to state 3
+    LPAREN     shift, and go to state 4
+    ID         shift, and go to state 5
+    CONST_KEY  shift, and go to state 6
+    CFLOAT     shift, and go to state 7
+    CINT       shift, and go to state 8
+
+    line    go to state 9
+    key     go to state 10
+    expr    go to state 11
+    term    go to state 12
+    factor  go to state 13
+
+
+State 2
+
+    0 $accept: input $end .
+
+    $default  accept
+
+
+State 3
+
+    3 line: NEWLINE .
+
+    $default  reduce using rule 3 (line)
+
+
+State 4
+
+   14 factor: LPAREN . expr RPAREN
+
+    LPAREN  shift, and go to state 4
+    CFLOAT  shift, and go to state 7
+    CINT    shift, and go to state 8
+
+    expr    go to state 14
+    term    go to state 12
+    factor  go to state 13
+
+
+State 5
+
+    7 key: ID .
+
+    $default  reduce using rule 7 (key)
+
+
+State 6
+
+    6 key: CONST_KEY .
+
+    $default  reduce using rule 6 (key)
+
+
+State 7
+
+   15 factor: CFLOAT .
+
+    $default  reduce using rule 15 (factor)
+
+
+State 8
+
+   16 factor: CINT .
+
+    $default  reduce using rule 16 (factor)
+
+
+State 9
+
+    2 input: input line .
+
+    $default  reduce using rule 2 (input)
+
+
+State 10
+
+    5 line: key . NEWLINE
+
+    NEWLINE  shift, and go to state 15
+
+
+State 11
+
+    4 line: expr . NEWLINE
+    8 expr: expr . PLUS term
+    9     | expr . MINUS term
+
+    NEWLINE  shift, and go to state 16
+    PLUS     shift, and go to state 17
+    MINUS    shift, and go to state 18
+
+
+State 12
+
+   10 expr: term .
+   11 term: term . ASTERISK factor
+   12     | term . SLASH factor
+
+    SLASH     shift, and go to state 19
+    ASTERISK  shift, and go to state 20
+
+    $default  reduce using rule 10 (expr)
+
+
+State 13
+
+   13 term: factor .
+
+    $default  reduce using rule 13 (term)
+
+
+State 14
+
+    8 expr: expr . PLUS term
+    9     | expr . MINUS term
+   14 factor: LPAREN expr . RPAREN
+
+    PLUS    shift, and go to state 17
+    MINUS   shift, and go to state 18
+    RPAREN  shift, and go to state 21
+
+
+State 15
+
+    5 line: key NEWLINE .
+
+    $default  reduce using rule 5 (line)
+
+
+State 16
+
+    4 line: expr NEWLINE .
+
+    $default  reduce using rule 4 (line)
+
+
+State 17
+
+    8 expr: expr PLUS . term
+
+    LPAREN  shift, and go to state 4
+    CFLOAT  shift, and go to state 7
+    CINT    shift, and go to state 8
+
+    term    go to state 22
+    factor  go to state 13
+
+
+State 18
+
+    9 expr: expr MINUS . term
+
+    LPAREN  shift, and go to state 4
+    CFLOAT  shift, and go to state 7
+    CINT    shift, and go to state 8
+
+    term    go to state 23
+    factor  go to state 13
+
+
+State 19
+
+   12 term: term SLASH . factor
+
+    LPAREN  shift, and go to state 4
+    CFLOAT  shift, and go to state 7
+    CINT    shift, and go to state 8
+
+    factor  go to state 24
+
+
+State 20
+
+   11 term: term ASTERISK . factor
+
+    LPAREN  shift, and go to state 4
+    CFLOAT  shift, and go to state 7
+    CINT    shift, and go to state 8
+
+    factor  go to state 25
+
+
+State 21
+
+   14 factor: LPAREN expr RPAREN .
+
+    $default  reduce using rule 14 (factor)
+
+
+State 22
+
+    8 expr: expr PLUS term .
+   11 term: term . ASTERISK factor
+   12     | term . SLASH factor
+
+    SLASH     shift, and go to state 19
+    ASTERISK  shift, and go to state 20
+
+    $default  reduce using rule 8 (expr)
+
+
+State 23
+
+    9 expr: expr MINUS term .
+   11 term: term . ASTERISK factor
+   12     | term . SLASH factor
+
+    SLASH     shift, and go to state 19
+    ASTERISK  shift, and go to state 20
+
+    $default  reduce using rule 9 (expr)
+
+
+State 24
+
+   12 term: term SLASH factor .
+
+    $default  reduce using rule 12 (term)
+
+
+State 25
+
+   11 term: term ASTERISK factor .
+
+    $default  reduce using rule 11 (term)
