@@ -134,7 +134,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 54 "lex.y" /* yacc.c:1909  */
+#line 57 "lex.y" /* yacc.c:1909  */
 
 	SymbolInfo *symbol;
 	char *str;

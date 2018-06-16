@@ -6,6 +6,7 @@ int iTable;
 int hashSize=50;
 
 FILE *parseLog=NULL;
+FILE *parseError=NULL;
 
 class ScopeTable{
 private:

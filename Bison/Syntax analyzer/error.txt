@@ -1,0 +1,16 @@
+
+Error at line no. 6. Multiple declaration of variable a
+
+Error at line no. 14. Undeclared variable b
+
+Error at line no. 14. Undeclared variable f
+
+Error at line no. 24. Multiple declaration of variable foo
+
+Error at line no. 28. Non-Integer array index
+
+Error at line no. 29. Non-Integer array index
+
+Error at line no. 29. Non-Integer array index
+
+total errors: 2

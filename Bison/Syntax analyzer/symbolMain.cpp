@@ -1,6 +1,6 @@
 #include "1505120_Symbol_Table.cpp"
 
-bool manage(char ch,string en1,string en2="\0"){
+bool manage(char ch,string en1,string en2="a"){
 
 	switch(ch){
             case 'I':
@@ -8,7 +8,13 @@ bool manage(char ch,string en1,string en2="\0"){
                     /*
                         Insertion in the scope table
                     */
-                    
+                
+                    SymbolInfo *tmp=st.Lookup(en1);
+                    if(tmp!=0){
+                        if(tmp->symbol_type=="foo"){
+                            cout<<"Variable or function with same name"<<endl; return false;
+                        }
+                    }
                     if(st.Insert(en1,en2)) return true;
                     cout<< "Not insurted!"<<endl;
 		            //st.PrintCurrent();
@@ -17,16 +23,15 @@ bool manage(char ch,string en1,string en2="\0"){
                 }
             case 'L':
                 {
-                    //cin>>en1;
 
                     if(st.Lookup(en1)!=0){
-                        cout<< "\n Found in ScopeTable# "<<iTable<< " at position "<<iIndex<<","<<iPosition<<endl;
-                        fprintf(parseLog,"\n Found in ScopeTable# %d at position %d,%d\n",iTable,iIndex,iPosition);
+                        //cout<< "\n Found in ScopeTable# "<<iTable<< " at position "<<iIndex<<","<<iPosition<<endl;
+                        //fprintf(parseLog,"\n Found in ScopeTable# %d at position %d,%d\n",iTable,iIndex,iPosition);
                         return true;
                     }
                     else {
-                        cout<< "Not found!"<<endl;
-                        fprintf(parseLog,"Not found!\n");
+                        //cout<< "Not found!"<<endl;
+                        //fprintf(parseLog,"Not found!\n");
                         return false;
                     }
                     
@@ -57,14 +62,14 @@ bool manage(char ch,string en1,string en2="\0"){
                     st.enterScope(hashSize);
                     //int tn=st.getTableNumber();
                     
-                    fprintf(parseLog,"\n Entering new Scope Table with id# %d\n\n",st.getTableNumber());
+                    fprintf(parseLog,"\n Creating new Scope Table with id# %d\n\n",st.getTableNumber());
 
                     return true;
                 }
             case 'E':
                 {
                     st.PrintAll();
-                    fprintf(parseLog, "\n" );
+                    fprintf(parseLog, "\n Deleting table with Id# %d\n",st.getTableNumber() );
                     st.exitScope();
                     return true;
                 }

@@ -266,6 +266,9 @@ static void yy_flex_free YY_PROTO(( void * ));
 
 
 #define YY_USES_REJECT
+
+#define yywrap() 1
+#define YY_SKIP_YYWRAP
 typedef unsigned char YY_CHAR;
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
 typedef int yy_state_type;
@@ -674,7 +677,7 @@ char *chknum(char *s,bool flag=true){
     return str;
 }
 
-#line 678 "lex.yy.c"
+#line 681 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -838,7 +841,7 @@ YY_DECL
 
 #line 174 "lex.l"
 
-#line 842 "lex.yy.c"
+#line 845 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -1370,7 +1373,7 @@ YY_RULE_SETUP
 #line 422 "lex.l"
 ECHO;
 	YY_BREAK
-#line 1374 "lex.yy.c"
+#line 1377 "lex.yy.c"
 			case YY_STATE_EOF(INITIAL):
 				yyterminate();
 

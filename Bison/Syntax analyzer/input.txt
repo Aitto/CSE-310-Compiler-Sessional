@@ -3,37 +3,30 @@ int x,y,z; float a;
 void foo();
 
 int var(int a, int b,int c,int d){
+	int a;
+	a=4;
 	return a+b;
 }
 
 void foo(){
 	x=2;
 	y=x-5;
+	b=3+f;
+	int x;
+	x=7;
+}
+
+float k(int t,int r){
+	return 8.0;
 }
 
 int main(){
-
-	if(a>b){
-		09abc;
-	}
-
-	if(a>b){
-
-	}else{
-
-	}
-
-	for(i=0;a<b;i++){
-
-	}
-
-	while(b>2){
-
-	}
-
+	int foo;
 	int a[2],c,i,j ; float d;
 	a[0]=1;
 	a[1]=5;
+	a[1.5]=0;
+	a[2]=3; a[2.5]= a[3.5];
 	i= a[0]+a[1];
 	j= 2*3+(5%3 < 4 && 8) || 2 ;
 	d=var(1,2*3)+3.5*2;

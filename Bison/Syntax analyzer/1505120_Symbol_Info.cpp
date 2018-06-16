@@ -15,6 +15,7 @@ using namespace std;
 class SymbolInfo{
 public:
     string symbol_name,symbol_type;
+    string var_type;
     int ival;
     float dval;
     //This is separate chaining implementation. Next (pointer) for containing address to next pointer.

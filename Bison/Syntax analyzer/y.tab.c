@@ -81,9 +81,12 @@ int yylex(void);
 
 string typeSp;
 string vType;
+string rType;
 string par[10];
 string parType[10];
+bool c;
 int parNum=0;
+int terrors=0;
 
 extern char* yytext;
 extern int yylineno;
@@ -115,7 +118,7 @@ void addToTable(){
 }
 
 
-#line 119 "y.tab.c" /* yacc.c:339  */
+#line 122 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -239,14 +242,14 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 54 "lex.y" /* yacc.c:355  */
+#line 57 "lex.y" /* yacc.c:355  */
 
 	SymbolInfo *symbol;
 	char *str;
 	int ival;
 	float *dval;
 
-#line 250 "y.tab.c" /* yacc.c:355  */
+#line 253 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -263,7 +266,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 267 "y.tab.c" /* yacc.c:358  */
+#line 270 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -564,13 +567,13 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    77,    77,    84,    85,    88,    89,    90,    93,    94,
-      97,    98,   102,   103,   104,   105,   109,   109,   110,   110,
-     113,   116,   117,   118,   121,   122,   123,   124,   127,   128,
-     131,   132,   133,   134,   135,   136,   137,   138,   139,   142,
-     143,   146,   147,   150,   151,   154,   155,   158,   159,   162,
-     163,   166,   167,   170,   171,   172,   175,   176,   177,   178,
-     179,   180,   181,   184,   185,   188,   189
+       0,    80,    80,    87,    88,    91,    92,    93,    96,    97,
+     100,   101,   105,   106,   107,   108,   112,   112,   113,   113,
+     116,   119,   120,   121,   124,   125,   126,   127,   130,   131,
+     134,   135,   136,   137,   138,   139,   140,   141,   142,   145,
+     146,   149,   150,   153,   154,   157,   158,   161,   162,   165,
+     166,   169,   170,   173,   174,   175,   178,   179,   180,   181,
+     182,   183,   184,   187,   188,   191,   192
 };
 #endif
 
@@ -1428,403 +1431,403 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 78 "lex.y" /* yacc.c:1646  */
+#line 81 "lex.y" /* yacc.c:1646  */
     {
 		//write your code in this block in all the similar blocks below
 		manage('P',"...");
 	}
-#line 1437 "y.tab.c" /* yacc.c:1646  */
+#line 1440 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 84 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d program : program unit \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+"\n"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"\n%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1443 "y.tab.c" /* yacc.c:1646  */
+#line 87 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d program : program unit\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+"\n"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"\n%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1446 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 85 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d program : unit \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1449 "y.tab.c" /* yacc.c:1646  */
+#line 88 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d program : unit\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1452 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 88 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d unit : var_declaration \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1455 "y.tab.c" /* yacc.c:1646  */
+#line 91 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d unit : var_declaration\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1458 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 89 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d unit : func_declaration \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1461 "y.tab.c" /* yacc.c:1646  */
+#line 92 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d unit : func_declaration\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1464 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 90 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d unit : func_definition \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1467 "y.tab.c" /* yacc.c:1646  */
+#line 93 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d unit : func_definition\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1470 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 93 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d func_declaration : type_specifier ID LPAREN parameter_list RPAREN SEMICOLON \n",yylineno ); (yyval.symbol)->setName((yyvsp[-5].symbol)->getName()+" "+(yyvsp[-4].symbol)->getName()+"("+(yyvsp[-2].symbol)->getName()+");" ); fprintf(parseLog,"%s\n",(yyvsp[-5].symbol)->getName().c_str()); }
-#line 1473 "y.tab.c" /* yacc.c:1646  */
+#line 96 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d func_declaration : type_specifier ID LPAREN parameter_list RPAREN SEMICOLON\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-5].symbol)->getName()+" "+(yyvsp[-4].symbol)->getName()+"("+(yyvsp[-2].symbol)->getName()+");" ); fprintf(parseLog,"%s\n",(yyvsp[-5].symbol)->getName().c_str()); }
+#line 1476 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 94 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d func_declaration : type_specifier ID LPAREN RPAREN SEMICOLON \n",yylineno ); (yyval.symbol)->setName((yyvsp[-4].symbol)->getName()+" "+(yyvsp[-3].symbol)->getName() + "();"); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str()); }
-#line 1479 "y.tab.c" /* yacc.c:1646  */
+#line 97 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d func_declaration : type_specifier ID LPAREN RPAREN SEMICOLON\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-4].symbol)->getName()+" "+(yyvsp[-3].symbol)->getName() + "();"); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str()); }
+#line 1482 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 97 "lex.y" /* yacc.c:1646  */
-    { manage('I',(yyvsp[-4].symbol)->getName(),"foo"); fprintf(parseLog, "At line no : %d func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement \n",yylineno ); (yyval.symbol)->setName((yyvsp[-5].symbol)->getName()+" "+(yyvsp[-4].symbol)->getName()+"("+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName() ); fprintf(parseLog,"%s\n",(yyvsp[-5].symbol)->getName().c_str()); }
-#line 1485 "y.tab.c" /* yacc.c:1646  */
+#line 100 "lex.y" /* yacc.c:1646  */
+    { rType=(yyvsp[-5].symbol)->getName(); manage('I',(yyvsp[-4].symbol)->getName(),"foo"); fprintf(parseLog, "\nAt line no : %d func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-5].symbol)->getName()+" "+(yyvsp[-4].symbol)->getName()+"("+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName() ); fprintf(parseLog,"%s\n",(yyvsp[-5].symbol)->getName().c_str()); }
+#line 1488 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 98 "lex.y" /* yacc.c:1646  */
-    { manage('I',(yyvsp[-3].symbol)->getName(),"foo"); fprintf(parseLog, "At line no : %d func_definition : type_specifier ID LPAREN RPAREN compound_statement \n",yylineno ); (yyval.symbol)->setName((yyvsp[-4].symbol)->getName()+ " "+ (yyvsp[-3].symbol)->getName()+ "( )"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str());}
-#line 1491 "y.tab.c" /* yacc.c:1646  */
+#line 101 "lex.y" /* yacc.c:1646  */
+    { /*rType=$1->getName();*/ manage('I',(yyvsp[-3].symbol)->getName(),"foo");  fprintf(parseLog, "\nAt line no : %d func_definition : type_specifier ID LPAREN RPAREN compound_statement\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-4].symbol)->getName()+ " "+ (yyvsp[-3].symbol)->getName()+ "( )"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str());}
+#line 1494 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 102 "lex.y" /* yacc.c:1646  */
-    { par[parNum]=(yyvsp[0].symbol)->getName(); parType[parNum]=(yyvsp[-1].symbol)->getName(); parNum++; fprintf(parseLog, "At line no : %d parameter_list : parameter_list COMMA type_specifier ID \n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+","+(yyvsp[-1].symbol)->getName()+" "+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str());  }
-#line 1497 "y.tab.c" /* yacc.c:1646  */
+#line 105 "lex.y" /* yacc.c:1646  */
+    { par[parNum]=(yyvsp[0].symbol)->getName(); parType[parNum]=(yyvsp[-1].symbol)->getName(); parNum++; fprintf(parseLog, "\nAt line no : %d parameter_list : parameter_list COMMA type_specifier ID\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+","+(yyvsp[-1].symbol)->getName()+" "+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str());  }
+#line 1500 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 103 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d parameter_list : parameter_list COMMA type_specifier \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+","+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1503 "y.tab.c" /* yacc.c:1646  */
+#line 106 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d parameter_list : parameter_list COMMA type_specifier\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+","+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1506 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 104 "lex.y" /* yacc.c:1646  */
-    { par[parNum]=(yyvsp[0].symbol)->getName(); parType[parNum]=(yyvsp[-1].symbol)->getName(); parNum++; fprintf(parseLog, "At line no : %d parameter_list : type_specifier ID \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+" "+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1509 "y.tab.c" /* yacc.c:1646  */
+#line 107 "lex.y" /* yacc.c:1646  */
+    { par[parNum]=(yyvsp[0].symbol)->getName(); parType[parNum]=(yyvsp[-1].symbol)->getName(); parNum++; fprintf(parseLog, "\nAt line no : %d parameter_list : type_specifier ID\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+" "+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1512 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 105 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d parameter_list : type_specifier \n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1515 "y.tab.c" /* yacc.c:1646  */
+#line 108 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d parameter_list : type_specifier\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1518 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 109 "lex.y" /* yacc.c:1646  */
+#line 112 "lex.y" /* yacc.c:1646  */
     {manage('S',"..."); addToTable(); }
-#line 1521 "y.tab.c" /* yacc.c:1646  */
+#line 1524 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 109 "lex.y" /* yacc.c:1646  */
-    { parNum=0; fprintf(parseLog, "At line no : %d compound_statement : LCURL statements RCURL \n",yylineno ); (yyval.symbol)->setName("{\n"+(yyvsp[-1].symbol)->getName()+"}\n"); fprintf(parseLog,"%s\n",(yyval.symbol)->getName().c_str()); manage('E',"..."); }
-#line 1527 "y.tab.c" /* yacc.c:1646  */
+#line 112 "lex.y" /* yacc.c:1646  */
+    { parNum=0; fprintf(parseLog, "\nAt line no : %d compound_statement : LCURL statements RCURL\n\n",yylineno ); (yyval.symbol)->setName("{\n"+(yyvsp[-1].symbol)->getName()+"}\n"); fprintf(parseLog,"%s\n",(yyval.symbol)->getName().c_str()); manage('E',"..."); }
+#line 1530 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 110 "lex.y" /* yacc.c:1646  */
+#line 113 "lex.y" /* yacc.c:1646  */
     {manage('S',"..."); addToTable();}
-#line 1533 "y.tab.c" /* yacc.c:1646  */
+#line 1536 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 110 "lex.y" /* yacc.c:1646  */
-    { parNum=0; fprintf(parseLog, "At line no : %d compound_statement : LCURL RCURL \n",yylineno ); (yyval.symbol)->setName("{\n}\n"); fprintf(parseLog,"{\n}\n"); manage('E',"..."); }
-#line 1539 "y.tab.c" /* yacc.c:1646  */
+#line 113 "lex.y" /* yacc.c:1646  */
+    { parNum=0; fprintf(parseLog, "\nAt line no : %d compound_statement : LCURL RCURL\n\n",yylineno ); (yyval.symbol)->setName("{\n}\n"); fprintf(parseLog,"{\n}\n"); manage('E',"..."); }
+#line 1542 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 113 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d var_declaration : type_specifier declaration_list SEMICOLON \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+ " "+(yyvsp[-1].symbol)->getName() + ";"); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1545 "y.tab.c" /* yacc.c:1646  */
+#line 116 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d var_declaration : type_specifier declaration_list SEMICOLON\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+ " "+(yyvsp[-1].symbol)->getName() + ";"); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1548 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 116 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d type_specifier : INT \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());  }
-#line 1551 "y.tab.c" /* yacc.c:1646  */
+#line 119 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d type_specifier : INT\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());  }
+#line 1554 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 117 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d type_specifier : FLOAT \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());  }
-#line 1557 "y.tab.c" /* yacc.c:1646  */
+#line 120 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d type_specifier : FLOAT\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());  }
+#line 1560 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 118 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d type_specifier : VOID \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1563 "y.tab.c" /* yacc.c:1646  */
+#line 121 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d type_specifier : VOID\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1566 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 121 "lex.y" /* yacc.c:1646  */
-    { manage('I',(yyvsp[0].symbol)->getName(),"ID"); fprintf(parseLog, "At line no : %d declaration_list : declaration_list COMMA ID \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+ "," + (yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str());  }
-#line 1569 "y.tab.c" /* yacc.c:1646  */
+#line 124 "lex.y" /* yacc.c:1646  */
+    { c=manage('I',(yyvsp[0].symbol)->getName(),"ID"); if(!c)fprintf(parseError,"\nError at line no. %d. Multiple declaration of variable %s\n",yylineno,(yyvsp[0].symbol)->getName().c_str()); fprintf(parseLog, "\nAt line no : %d declaration_list : declaration_list COMMA ID\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+ "," + (yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str());  }
+#line 1572 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 122 "lex.y" /* yacc.c:1646  */
-    { manage('I',(yyvsp[-3].symbol)->getName()+ "[]" ,"ID"); fprintf(parseLog, "At line no : %d declaration_list : declaration_list COMMA ID LTHIRD CONST_INT RTHIRD \n",yylineno ); (yyval.symbol)->setName((yyvsp[-5].symbol)->getName()+"," + (yyvsp[-3].symbol)->getName()+"["+(yyvsp[-1].symbol)->getName()+"]"); fprintf(parseLog,"%s\n",(yyvsp[-5].symbol)->getName().c_str()); }
-#line 1575 "y.tab.c" /* yacc.c:1646  */
+#line 125 "lex.y" /* yacc.c:1646  */
+    { c=manage('I',(yyvsp[-3].symbol)->getName()+ "[]" ,"ID"); if(!c) fprintf(parseError,"\nError at line no. %d. Multiple declaration of variable %s\n",yylineno,(yyvsp[-3].symbol)->getName().c_str()); fprintf(parseLog, "\nAt line no : %d declaration_list : declaration_list COMMA ID LTHIRD CONST_INT RTHIRD\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-5].symbol)->getName()+"," + (yyvsp[-3].symbol)->getName()+"["+(yyvsp[-1].symbol)->getName()+"]"); fprintf(parseLog,"%s\n",(yyvsp[-5].symbol)->getName().c_str()); }
+#line 1578 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 123 "lex.y" /* yacc.c:1646  */
-    { manage('I',(yyvsp[0].symbol)->getName(),"ID"); fprintf(parseLog, "At line no : %d declaration_list : ID \n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());  }
-#line 1581 "y.tab.c" /* yacc.c:1646  */
+#line 126 "lex.y" /* yacc.c:1646  */
+    { c=manage('I',(yyvsp[0].symbol)->getName(),"ID"); if(!c) fprintf(parseError,"\nError at line no. %d. Multiple declaration of variable %s\n",yylineno,(yyvsp[0].symbol)->getName().c_str()); fprintf(parseLog, "\nAt line no : %d declaration_list : ID\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());  }
+#line 1584 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 124 "lex.y" /* yacc.c:1646  */
-    { manage('I',(yyvsp[-3].symbol)->getName()+"[]","ID"); fprintf(parseLog, "At line no : %d declaration_list : ID LTHIRD CONST_INT RTHIRD \n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+"["+(yyvsp[-1].symbol)->getName()+"]"); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str()); }
-#line 1587 "y.tab.c" /* yacc.c:1646  */
+#line 127 "lex.y" /* yacc.c:1646  */
+    { c=manage('I',(yyvsp[-3].symbol)->getName()+"[]","ID"); if(!c) fprintf(parseError,"\nError at line no. %d. Multiple declaration of variable %s\n",yylineno,(yyvsp[-3].symbol)->getName().c_str()); fprintf(parseLog, "\nAt line no : %d declaration_list : ID LTHIRD CONST_INT RTHIRD\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+"["+(yyvsp[-1].symbol)->getName()+"]"); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str()); }
+#line 1590 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 127 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statements : statement \n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1593 "y.tab.c" /* yacc.c:1646  */
+#line 130 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statements : statement\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1596 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 128 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statements : statements statement \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+"\n"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str());}
-#line 1599 "y.tab.c" /* yacc.c:1646  */
+#line 131 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statements : statements statement\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+"\n"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str());}
+#line 1602 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 131 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : var_declaration \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1605 "y.tab.c" /* yacc.c:1646  */
+#line 134 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : var_declaration\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1608 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 132 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : expression_statement \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1611 "y.tab.c" /* yacc.c:1646  */
+#line 135 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : expression_statement\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1614 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 133 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : compound_statement \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1617 "y.tab.c" /* yacc.c:1646  */
+#line 136 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : compound_statement\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1620 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 134 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : FOR LPAREN expression_statement expression_statement expression RPAREN statement \n",yylineno ); (yyval.symbol)->setName("for("+(yyvsp[-4].symbol)->getName()+(yyvsp[-3].symbol)->getName()+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-6].symbol)->getName().c_str()); }
-#line 1623 "y.tab.c" /* yacc.c:1646  */
+#line 137 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : FOR LPAREN expression_statement expression_statement expression RPAREN statement\n\n",yylineno ); (yyval.symbol)->setName("for("+(yyvsp[-4].symbol)->getName()+(yyvsp[-3].symbol)->getName()+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-6].symbol)->getName().c_str()); }
+#line 1626 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 135 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : IF LPAREN expression RPAREN statement %prec LOWER_THEN_ELSE \n",yylineno ); (yyval.symbol)->setName("if("+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str()); }
-#line 1629 "y.tab.c" /* yacc.c:1646  */
+#line 138 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : IF LPAREN expression RPAREN statement %prec LOWER_THEN_ELSE\n\n",yylineno ); (yyval.symbol)->setName("if("+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str()); }
+#line 1632 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 136 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : IF LPAREN expression RPAREN statement ELSE statement \n",yylineno ); (yyval.symbol)->setName("if("+(yyvsp[-4].symbol)->getName()+")"+(yyvsp[-2].symbol)->getName()+" else "+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-6].symbol)->getName().c_str()); }
-#line 1635 "y.tab.c" /* yacc.c:1646  */
+#line 139 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : IF LPAREN expression RPAREN statement ELSE statement\n\n",yylineno ); (yyval.symbol)->setName("if("+(yyvsp[-4].symbol)->getName()+")"+(yyvsp[-2].symbol)->getName()+" else "+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-6].symbol)->getName().c_str()); }
+#line 1638 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 137 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : WHILE LPAREN expression RPAREN statement \n",yylineno ); (yyval.symbol)->setName("while("+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str()); }
-#line 1641 "y.tab.c" /* yacc.c:1646  */
+#line 140 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : WHILE LPAREN expression RPAREN statement\n\n",yylineno ); (yyval.symbol)->setName("while("+(yyvsp[-2].symbol)->getName()+")"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-4].symbol)->getName().c_str()); }
+#line 1644 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 138 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : PRINTLN LPAREN ID RPAREN SEMICOLON \n",yylineno ); }
-#line 1647 "y.tab.c" /* yacc.c:1646  */
+#line 141 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d statement : PRINTLN LPAREN ID RPAREN SEMICOLON\n\n",yylineno ); }
+#line 1650 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 139 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d statement : RETURN expression SEMICOLON \n",yylineno ); (yyval.symbol)->setName("return " +(yyvsp[-1].symbol)->getName()+";");  fprintf(parseLog,"return %s ;\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1653 "y.tab.c" /* yacc.c:1646  */
+#line 142 "lex.y" /* yacc.c:1646  */
+    { /*if(rType!=vType) fprintf(parseError,"\nError at line %d Function return type not matched!\n",yylineno);*/ fprintf(parseLog, "\nAt line no : %d statement : RETURN expression SEMICOLON\n\n",yylineno ); (yyval.symbol)->setName("return " +(yyvsp[-1].symbol)->getName()+";");  fprintf(parseLog,"return %s ;\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1656 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 142 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d expression_statement : SEMICOLON \n",yylineno ); (yyval.symbol)->setName(";\n"); fprintf(parseLog,";\n"); }
-#line 1659 "y.tab.c" /* yacc.c:1646  */
+#line 145 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d expression_statement : SEMICOLON\n\n",yylineno ); (yyval.symbol)->setName(";\n"); fprintf(parseLog,";\n"); }
+#line 1662 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 143 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d expression_statement : expression SEMICOLON \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+";"); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1665 "y.tab.c" /* yacc.c:1646  */
+#line 146 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d expression_statement : expression SEMICOLON\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+";"); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1668 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 146 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d variable : ID \n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1671 "y.tab.c" /* yacc.c:1646  */
+#line 149 "lex.y" /* yacc.c:1646  */
+    { c=manage('L',(yyvsp[0].symbol)->getName()); if(!c) fprintf(parseError,"\nError at line no. %d. Undeclared variable %s\n",yylineno,(yyvsp[0].symbol)->getName().c_str()),terror++; fprintf(parseLog, "\nAt line no : %d variable : ID\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1674 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 147 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d variable : ID LTHIRD expression RTHIRD \n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+"["+(yyvsp[-1].symbol)->getName()+"]"); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str()); }
-#line 1677 "y.tab.c" /* yacc.c:1646  */
+#line 150 "lex.y" /* yacc.c:1646  */
+    { if(vType!="int") fprintf(parseError,"\nError at line no. %d. Non-Integer array index\n",yylineno); c=manage('L',(yyvsp[-3].symbol)->getName()); if(!c) fprintf(parseError,"\nError at line no. %d. Undeclared variable %s\n",yylineno,(yyvsp[-3].symbol)->getName().c_str()),terror++; fprintf(parseLog, "\nAt line no : %d variable : ID LTHIRD expression RTHIRD\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+"["+(yyvsp[-1].symbol)->getName()+"]"); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str()); }
+#line 1680 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 150 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d expression : logic_expression \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1683 "y.tab.c" /* yacc.c:1646  */
+#line 153 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d expression : logic_expression\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1686 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 151 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d expression : variable ASSIGNOP logic_expression \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+"="+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1689 "y.tab.c" /* yacc.c:1646  */
+#line 154 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d expression : variable ASSIGNOP logic_expression\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+"="+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1692 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 154 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d logic_expression : rel_expression \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1695 "y.tab.c" /* yacc.c:1646  */
+#line 157 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d logic_expression : rel_expression\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1698 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 155 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d logic_expression : rel_expression LOGICOP rel_expression \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1701 "y.tab.c" /* yacc.c:1646  */
+#line 158 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d logic_expression : rel_expression LOGICOP rel_expression\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1704 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 158 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d rel_expression : simple_expression \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1707 "y.tab.c" /* yacc.c:1646  */
+#line 161 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d rel_expression : simple_expression\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1710 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 159 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d rel_expression : simple_expression RELOP simple_expression \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1713 "y.tab.c" /* yacc.c:1646  */
+#line 162 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d rel_expression : simple_expression RELOP simple_expression\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1716 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 162 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d simple_expression : term \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1719 "y.tab.c" /* yacc.c:1646  */
+#line 165 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d simple_expression : term\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1722 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 163 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d simple_expression : simple_expression ADDOP term \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1725 "y.tab.c" /* yacc.c:1646  */
+#line 166 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d simple_expression : simple_expression ADDOP term\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1728 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 166 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d term : unary_expression \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1731 "y.tab.c" /* yacc.c:1646  */
+#line 169 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d term : unary_expression\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1734 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 167 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d term : term MULOP unary_expression \n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1737 "y.tab.c" /* yacc.c:1646  */
+#line 170 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d term : term MULOP unary_expression\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+(yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1740 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 170 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d unary_expression : ADDOP unary_expression \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1743 "y.tab.c" /* yacc.c:1646  */
+#line 173 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d unary_expression : ADDOP unary_expression\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName()+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1746 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 171 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d unary_expression : NOT unary_expression \n",yylineno ); (yyval.symbol)->setName("!"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",("!"+(yyvsp[0].symbol)->getName()).c_str()); }
-#line 1749 "y.tab.c" /* yacc.c:1646  */
+#line 174 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d unary_expression : NOT unary_expression\n\n",yylineno ); (yyval.symbol)->setName("!"+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",("!"+(yyvsp[0].symbol)->getName()).c_str()); }
+#line 1752 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 172 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d unary_expression : factor \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1755 "y.tab.c" /* yacc.c:1646  */
+#line 175 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d unary_expression : factor\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1758 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 175 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : variable \n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1761 "y.tab.c" /* yacc.c:1646  */
+#line 178 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d factor : variable\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1764 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 176 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : ID LPAREN argument_list RPAREN \n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+"("+(yyvsp[-1].symbol)->getName() +")" ); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str()); }
-#line 1767 "y.tab.c" /* yacc.c:1646  */
+#line 179 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d factor : ID LPAREN argument_list RPAREN\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-3].symbol)->getName()+"("+(yyvsp[-1].symbol)->getName() +")" ); fprintf(parseLog,"%s\n",(yyvsp[-3].symbol)->getName().c_str()); }
+#line 1770 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 177 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : LPAREN expression RPAREN \n",yylineno ); (yyval.symbol)->setName("("+(yyvsp[-1].symbol)->getName()+")"); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
-#line 1773 "y.tab.c" /* yacc.c:1646  */
+#line 180 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d factor : LPAREN expression RPAREN\n\n",yylineno ); (yyval.symbol)->setName("("+(yyvsp[-1].symbol)->getName()+")"); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str()); }
+#line 1776 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 178 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : CONST_INT \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());}
-#line 1779 "y.tab.c" /* yacc.c:1646  */
+#line 181 "lex.y" /* yacc.c:1646  */
+    { vType="int"; fprintf(parseLog, "\nAt line no : %d factor : CONST_INT\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());}
+#line 1782 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 179 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : CONST_FLOAT \n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1785 "y.tab.c" /* yacc.c:1646  */
+#line 182 "lex.y" /* yacc.c:1646  */
+    { vType="float"; fprintf(parseLog, "\nAt line no : %d factor : CONST_FLOAT\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1788 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 180 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : variable INCOP \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName() + "++"); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1791 "y.tab.c" /* yacc.c:1646  */
+#line 183 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d factor : variable INCOP\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName() + "++"); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1794 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 181 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d factor : variable DECOP \n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName() + "--"); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
-#line 1797 "y.tab.c" /* yacc.c:1646  */
+#line 184 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d factor : variable DECOP\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-1].symbol)->getName() + "--"); fprintf(parseLog,"%s\n",(yyvsp[-1].symbol)->getName().c_str()); }
+#line 1800 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 184 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d argument_list : arguments\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
-#line 1803 "y.tab.c" /* yacc.c:1646  */
+#line 187 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d argument_list : arguments\n\n",yylineno ); fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str()); }
+#line 1806 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 185 "lex.y" /* yacc.c:1646  */
+#line 188 "lex.y" /* yacc.c:1646  */
     {}
-#line 1809 "y.tab.c" /* yacc.c:1646  */
+#line 1812 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 188 "lex.y" /* yacc.c:1646  */
-    { fprintf(parseLog, "At line no : %d arguments : arguments COMMA logic_expression\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+","+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str());}
-#line 1815 "y.tab.c" /* yacc.c:1646  */
+#line 191 "lex.y" /* yacc.c:1646  */
+    { fprintf(parseLog, "\nAt line no : %d arguments : arguments COMMA logic_expression\n\n",yylineno ); (yyval.symbol)->setName((yyvsp[-2].symbol)->getName()+","+(yyvsp[0].symbol)->getName()); fprintf(parseLog,"%s\n",(yyvsp[-2].symbol)->getName().c_str());}
+#line 1818 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 189 "lex.y" /* yacc.c:1646  */
+#line 192 "lex.y" /* yacc.c:1646  */
     {
-			  fprintf(parseLog, "At line no : %d arguments : logic_expression\n",yylineno );
+			  fprintf(parseLog, "\nAt line no : %d arguments : logic_expression\n\n",yylineno );
 		  	  fprintf(parseLog,"%s\n",(yyvsp[0].symbol)->getName().c_str());
 			}
-#line 1824 "y.tab.c" /* yacc.c:1646  */
+#line 1827 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1828 "y.tab.c" /* yacc.c:1646  */
+#line 1831 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2052,7 +2055,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 196 "lex.y" /* yacc.c:1906  */
+#line 199 "lex.y" /* yacc.c:1906  */
 
 int main(int argc,char *argv[])
 {
@@ -2080,7 +2083,8 @@ int main(int argc,char *argv[])
 	yyin=input;
 
 	parseLog=fopen("log.txt","w");
-	if(parseLog==NULL or input==NULL){
+	parseError=fopen("error.txt","w");
+	if(parseLog==NULL or input==NULL or parseError==NULL){
 		printf("Error. Unable to open file\n");
 		exit(1);
 	}
@@ -2092,10 +2096,13 @@ int main(int argc,char *argv[])
 
 	yyparse();
 	//printf("%d",i);
+
+	fprintf(parseLog,"\n\ttotal lines: %d\n\n",yylineno);
+	fprintf(parseError,"\ntotal errors: %d",terror);
 	
 	fclose(parseLog);
+	fclose(parseError);
 	fclose(input);
-
 	
 	fprintf(logOut,"\nTotal errors: %d",terror);
 	fclose(logOut);

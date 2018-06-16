@@ -5,12 +5,14 @@ private:
     ScopeTable *head;
     ScopeTable *tail;
     int tableNumber;
+    int tId;
 public:
 
     SymbolTable(){
         head=0;
         tail=0;
         tableNumber=0;
+        tId=0;
     }
 
     //Creating a new scope and making it current scope
