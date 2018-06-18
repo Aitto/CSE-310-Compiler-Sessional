@@ -8,7 +8,7 @@ bool manage(char ch,string en1,string en2="a"){
                     /*
                         Insertion in the scope table
                     */
-                
+                    if(st.getTableNumber()==0) st.enterScope(hashSize); 
                     SymbolInfo *tmp=st.Lookup(en1);
                     if(tmp!=0){
                         if(tmp->symbol_type=="foo"){
@@ -16,7 +16,7 @@ bool manage(char ch,string en1,string en2="a"){
                         }
                     }
                     if(st.Insert(en1,en2)) return true;
-                    cout<< "Not insurted!"<<endl;
+                    cout<< "Not inserted!"<<endl;
 		            //st.PrintCurrent();
                     break;
                     
@@ -76,6 +76,10 @@ bool manage(char ch,string en1,string en2="a"){
         }
         return false;
 
+}
+
+SymbolInfo * getSymbol(string s){
+    return st.Lookup(s);
 }
 
 /*int main(){

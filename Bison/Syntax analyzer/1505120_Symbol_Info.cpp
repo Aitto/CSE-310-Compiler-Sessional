@@ -15,18 +15,23 @@ using namespace std;
 class SymbolInfo{
 public:
     string symbol_name,symbol_type;
-    string var_type;
+    string var_type,ret_type;
+
     int ival;
     float dval;
+    int parNum;
+
     //This is separate chaining implementation. Next (pointer) for containing address to next pointer.
     SymbolInfo *next;
     SymbolInfo *prev;
 
     //Initialization
-    SymbolInfo(string name="a",string type="b"){
+    SymbolInfo(string name=" ",string type=" "){
         symbol_name=name, symbol_type=type;
         next=0;
         prev=0;
+        ival=0, parNum=0;
+        dval=0; var_type="none", ret_type="none";
     }
 
     void setName(string s){

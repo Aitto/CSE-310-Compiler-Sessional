@@ -12,7 +12,7 @@ void foo(){
 	x=2;
 	y=x-5;
 	b=3+f;
-	int x;
+	//int x;
 	x=7;
 }
 
@@ -23,12 +23,21 @@ float k(int t,int r){
 int main(){
 	int foo;
 	int a[2],c,i,j ; float d;
+	c[2]=5; a=3;
+	c=1<d;
+	c=dog(a,b);
+	d=k(x,y);
+	c=k(x,y);
+	c=foo();
 	a[0]=1;
+	a[foo()]=1;
+	a[k(1,2)]=1;
+	a[var(1,2,3,4)]=1;
 	a[1]=5;
 	a[1.5]=0;
 	a[2]=3; a[2.5]= a[3.5];
 	i= a[0]+a[1];
-	j= 2*3+(5%3 < 4 && 8) || 2 ;
+	j= 2*3+(5%3.5 < 4 && 8) || 2 ;
 	d=var(1,2*3)+3.5*2;
 	return 0;
 }

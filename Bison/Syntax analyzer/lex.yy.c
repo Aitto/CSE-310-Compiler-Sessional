@@ -1089,57 +1089,65 @@ YY_RULE_SETUP
 				fprintf(logOut,"\nLine No. %d: Token <CONST_INT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<CONST_INT,%s>",yytext); //Generating token
 				
-				ttokens++; yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setIval(atoi(yytext));
+				ttokens++;
+				yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setIval(atoi(yytext));
+				yylval.symbol->var_type="int";
 
 				return CONST_INT;
 			}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 266 "lex.l"
+#line 268 "lex.l"
 {//Float
 				fprintf(logOut,"\nLine No. %d: Token <CONST_FLOAT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext); //Generating token
 				
-				ttokens++; yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				ttokens++;
+				yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				yylval.symbol->var_type="float";
+
 				return CONST_FLOAT;
 				}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 273 "lex.l"
+#line 278 "lex.l"
 {//Exponential Float
 				fprintf(logOut,"\nLine No. %d: Token <CONST_FLOAT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext); //Generating token
 				
-				ttokens++; yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				ttokens++;
+				yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				yylval.symbol->var_type="float";
+
 				return CONST_FLOAT;
 				}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 280 "lex.l"
+#line 288 "lex.l"
 {
 				fprintf(logOut,"\nError at line %d: Empty character literal %s\n",yylineno,yytext),terror++;
 			}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 283 "lex.l"
+#line 291 "lex.l"
 { //Unfinished character literal like 'b or 'bbbbasd
 							fprintf(logOut,"\nError at line %d.Unterminated character literal %s\n",yylineno,yytext),terror++;
 						}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 288 "lex.l"
+#line 296 "lex.l"
 { //Multichracter constant like 'abc' '\nb' 'b\n'
 											fprintf(logOut,"\nError at line %d. Multicharacter constant error for character sequence %s\n",yylineno,yytext),terror++;
 										}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 292 "lex.l"
+#line 300 "lex.l"
 { //Finding character literal
 				
 									fprintf(logOut,"\n Line No. %d: Token <CONST_CHAR> Lexeme %s found\n",yylineno,yytext); //Adding to log file
@@ -1150,7 +1158,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 301 "lex.l"
+#line 309 "lex.l"
 {
 				fprintf(logOut,"\nLine No. %d: Token <INCOP> Lexeme %s found\n",yylineno,yytext);
 				fprintf(tokenOut,"<INCOP,%s>",yytext),ttokens++;
@@ -1159,7 +1167,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 306 "lex.l"
+#line 314 "lex.l"
 {
 				fprintf(logOut,"\nLine No. %d: Token <ADDOP> Lexeme %s found\n",yylineno,yytext);
 				fprintf(tokenOut,"<ADDOP,%s>",yytext),ttokens++; yylval.symbol=new SymbolInfo(yytext);
@@ -1168,7 +1176,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 311 "lex.l"
+#line 319 "lex.l"
 {
 				fprintf(logOut,"\nLine No. %d: Token <MULOP> Lexeme %s found\n",yylineno,yytext);
 				fprintf(tokenOut,"<MULOP,%s>",yytext),ttokens++; yylval.symbol=new SymbolInfo(yytext);
@@ -1177,7 +1185,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 317 "lex.l"
+#line 325 "lex.l"
 {
 								fprintf(logOut,"\nLine No. %d: Token <RELOP> Lexeme %s found\n",yylineno,yytext);
 								fprintf(tokenOut,"<RELOP,%s>",yytext),ttokens++; yylval.symbol=new SymbolInfo(yytext);
@@ -1186,7 +1194,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 323 "lex.l"
+#line 331 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <ASSIGNOP> Lexeme %s found\n",yylineno,yytext);
 			fprintf(tokenOut,"<ASSIGNOP,%s>",yytext),ttokens++; yylval.symbol=new SymbolInfo(yytext);
@@ -1195,7 +1203,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 328 "lex.l"
+#line 336 "lex.l"
 {
 				fprintf(logOut,"\nLine No. %d: Token <LOGICOP> Lexeme %s found\n",yylineno,yytext);
 				fprintf(tokenOut,"<LOGICOP,%s>",yytext),ttokens++; yylval.symbol=new SymbolInfo(yytext);
@@ -1204,7 +1212,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 333 "lex.l"
+#line 341 "lex.l"
 {
 							fprintf(logOut,"\nLine No. %d: Token <BITOP> Lexeme %s found\n",yylineno,yytext);
 							fprintf(tokenOut,"<BITOP,%s>",yytext),ttokens++;
@@ -1213,7 +1221,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 338 "lex.l"
+#line 346 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <NOT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<NOT,!>");
@@ -1222,7 +1230,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 343 "lex.l"
+#line 351 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <LPAREN> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<LPAREN,(>"); yylval.symbol=new SymbolInfo(yytext);
@@ -1231,7 +1239,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 348 "lex.l"
+#line 356 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <RPAREN> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<RPAREN,)>"); yylval.symbol=new SymbolInfo(yytext);
@@ -1240,7 +1248,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 353 "lex.l"
+#line 361 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <LCUR> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<LCUR,{>"); yylval.symbol=new SymbolInfo(yytext);
@@ -1249,7 +1257,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 358 "lex.l"
+#line 366 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <RCUR> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<RCUR,}>"); yylval.symbol=new SymbolInfo(yytext);
@@ -1258,7 +1266,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 363 "lex.l"
+#line 371 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <LTHIRD> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<LTHIRD,[>");
@@ -1267,7 +1275,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 368 "lex.l"
+#line 376 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <RTHIRD> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<RTHIRD,]>");
@@ -1276,7 +1284,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 373 "lex.l"
+#line 381 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <COMMA> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<COMMA,,>");
@@ -1285,7 +1293,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 378 "lex.l"
+#line 386 "lex.l"
 {
 			fprintf(logOut,"\nLine No. %d: Token <SEMICOLON> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 			fprintf(tokenOut,"<SEMICOLON,;>"); yylval.symbol=new SymbolInfo(yytext);
@@ -1294,14 +1302,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 383 "lex.l"
+#line 391 "lex.l"
 {//Unfinished String
 				fprintf(logOut,"\nError at line %d. Missing terminating character %s\n",yylineno,yytext),terror++;
 			}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 387 "lex.l"
+#line 395 "lex.l"
 {//String
 				fprintf(logOut,"\nLine No. %d: Token <STRING> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<STRING, %s>",fixS(yytext)); yylval.str=yytext;
@@ -1310,7 +1318,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 392 "lex.l"
+#line 400 "lex.l"
 {//single or \
 				multilined comment
 				fprintf(logOut,"\nLine No. %d: Token <COMMENT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
@@ -1318,62 +1326,64 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 397 "lex.l"
+#line 405 "lex.l"
 { //Unfinished comment
 				fprintf(logOut,"\nError at line %d. Unfinished comment %s\n",yylineno,yytext),terror++;
 			}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 400 "lex.l"
+#line 408 "lex.l"
 { //Multilined comment
 				fprintf(logOut,"\nToken <COMMENT> Lexeme %s found\n",yytext);
 			}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 403 "lex.l"
+#line 411 "lex.l"
 {
 					fprintf(logOut,"\nLine No. %d: Token <ID> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 					fprintf(tokenOut,"<ID,%s>",yytext);
+
 					yylval.symbol=new SymbolInfo(yytext);
+
 					return ID;
 				}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 409 "lex.l"
+#line 419 "lex.l"
 {//Wrong identifier
 		fprintf(logOut,"\nError at line %d. Invalid prefix on ID or invalid suffix on Number %s\n",yylineno,yytext),terror++;
 		}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 412 "lex.l"
+#line 422 "lex.l"
 {//Ill formed number
 		fprintf(logOut,"\nError at line %d. Ill formed Number %s\n",yylineno,yytext),terror++;
 		}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 415 "lex.l"
+#line 425 "lex.l"
 {//too many decimal points
 		fprintf(logOut,"\nError at line %d. Too many decimal points for %s\n",yylineno,yytext),terror++;
 		}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 418 "lex.l"
+#line 428 "lex.l"
 {
 		fprintf(logOut,"\nError at line %d. unrecognized character %s\n",yylineno,yytext),terror++;
 		}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 422 "lex.l"
+#line 432 "lex.l"
 ECHO;
 	YY_BREAK
-#line 1377 "lex.yy.c"
+#line 1387 "lex.yy.c"
 			case YY_STATE_EOF(INITIAL):
 				yyterminate();
 
@@ -2261,7 +2271,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 422 "lex.l"
+#line 432 "lex.l"
 
 
 /*int main(int argc,char *argv[]){

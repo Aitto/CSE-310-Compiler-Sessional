@@ -259,7 +259,9 @@ continue	{
 				fprintf(logOut,"\nLine No. %d: Token <CONST_INT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<CONST_INT,%s>",yytext); //Generating token
 				
-				ttokens++; yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setIval(atoi(yytext));
+				ttokens++;
+				yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setIval(atoi(yytext));
+				yylval.symbol->var_type="int";
 
 				return CONST_INT;
 			}
@@ -267,14 +269,20 @@ continue	{
 				fprintf(logOut,"\nLine No. %d: Token <CONST_FLOAT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext); //Generating token
 				
-				ttokens++; yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				ttokens++;
+				yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				yylval.symbol->var_type="float";
+
 				return CONST_FLOAT;
 				}
 {expoNumber}	{//Exponential Float
 				fprintf(logOut,"\nLine No. %d: Token <CONST_FLOAT> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 				fprintf(tokenOut,"<CONST_FLOAT,%s>",yytext); //Generating token
 				
-				ttokens++; yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				ttokens++;
+				yylval.symbol=new SymbolInfo(yytext); yylval.symbol->setDval(atof(yytext));
+				yylval.symbol->var_type="float";
+
 				return CONST_FLOAT;
 				}
 \'\'		{
@@ -403,7 +411,9 @@ continue	{
 {alphanumeric}	{
 					fprintf(logOut,"\nLine No. %d: Token <ID> Lexeme %s found\n",yylineno,yytext); //Adding to log file
 					fprintf(tokenOut,"<ID,%s>",yytext);
+
 					yylval.symbol=new SymbolInfo(yytext);
+
 					return ID;
 				}
 {wid}		{//Wrong identifier

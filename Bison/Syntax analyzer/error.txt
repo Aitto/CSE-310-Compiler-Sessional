@@ -1,16 +1,40 @@
 
-Error at line no. 6. Multiple declaration of variable a
+Error at line: 6. Multipe declaration of a
 
-Error at line no. 14. Undeclared variable b
+Error at line: 14. Undeclared variable b
 
-Error at line no. 14. Undeclared variable f
+Error at line: 14. Undeclared variable f
 
-Error at line no. 24. Multiple declaration of variable foo
+Error at line: 14. Type mismatched
 
-Error at line no. 28. Non-Integer array index
+Error at line: 24. Multipe declaration of foo
 
-Error at line no. 29. Non-Integer array index
+Error at line: 26. Not an Array
 
-Error at line no. 29. Non-Integer array index
+Error at line: 26. Trying to access array like normal variable!
 
-total errors: 2
+Error at line: 28. Trying to access array like normal variable!
+
+Error at line: 28. Undeclared variable b
+
+Error at line: 28. Undeclared function dog
+
+Error at line: 28. Type mismatched
+
+Error at line: 30. Type mismatched
+
+Error at line: 31. Can't call Void function for assignment or expression
+
+Error at line: 33. Can't call Void function for assignment or expression
+
+Error at line: 34. Not-Integer Array Index used
+
+Error at line: 37. Not-Integer Array Index used
+
+Error at line: 38. Not-Integer Array Index used
+
+Error at line: 38. Not-Integer Array Index used
+
+Error at ine: 40. Both operands on modulus should be Integer
+
+total errors: 19

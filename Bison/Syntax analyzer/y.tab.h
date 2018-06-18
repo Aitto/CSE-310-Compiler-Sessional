@@ -81,10 +81,10 @@ extern int yydebug;
     LPAREN = 291,
     RPAREN = 292,
     IF = 293,
-    ELSE = 294,
-    FOR = 295,
-    WHILE = 296,
-    LOWER_THEN_ELSE = 297
+    FOR = 294,
+    WHILE = 295,
+    LOWER_THEN_ELSE = 296,
+    ELSE = 297
   };
 #endif
 /* Tokens.  */
@@ -124,17 +124,17 @@ extern int yydebug;
 #define LPAREN 291
 #define RPAREN 292
 #define IF 293
-#define ELSE 294
-#define FOR 295
-#define WHILE 296
-#define LOWER_THEN_ELSE 297
+#define FOR 294
+#define WHILE 295
+#define LOWER_THEN_ELSE 296
+#define ELSE 297
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 57 "lex.y" /* yacc.c:1909  */
+#line 72 "lex.y" /* yacc.c:1909  */
 
 	SymbolInfo *symbol;
 	char *str;
