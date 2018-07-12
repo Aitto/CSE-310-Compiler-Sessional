@@ -1,0 +1,31 @@
+
+Error at line : 13. Return type doesn't match
+
+Error at line: 21. Multipe declaration of c
+
+Error at line: 22. Type mismatched
+
+Error at line: 23. Not-Integer Array Index used
+
+Error at ine: 24. Both operands on modulus should be Integer
+
+Error at ine: 25. Both operands on modulus should be Integer
+
+Error at line: 26. Trying to access array like normal variable!
+
+Error at line: 27. Can't call Void function for assignment or expression
+
+Error at line: 29. Undeclared variable b
+
+Error at line: 29. Type mismatched
+
+Error at line: 30. Trying to access array like normal variable!
+
+Error at line: 31. i not an Array
+
+Error at line 32, Parameter number doesn't match!
+
+Error at line :33. Function i not defined
+Error at line : 37. Parameter types doesn't match!
+syntax error, unexpected RCURL, expecting SEMICOLON
+total errors: 16
