@@ -17,12 +17,15 @@ public:
     string symbol_name,symbol_type;
     string var_type,ret_type;
     string code;
+    string temp_var;
+    string var_name;
 
     int ival;
     float dval;
     int parNum;
     bool func_defined;
     bool func_declared;
+    bool arr;
     string parTList[10];
 
     //This is separate chaining implementation. Next (pointer) for containing address to next pointer.
@@ -36,6 +39,7 @@ public:
         prev=0;
         ival=0, parNum=0, func_defined=false, func_declared=false;
         dval=0; var_type="none", ret_type="none";
+        arr=false;
     }
 
     void setName(string s){
@@ -88,3 +92,5 @@ public:
         }
     }
 };
+
+

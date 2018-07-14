@@ -1,22 +1,5 @@
-.model small
-.stack 100h
 
-.data
-	foof dw ?
-	t0 dw ?
-	t1 dw ?
-	t2 dw ?
-	maink dw ?
-	t3 dw ?
-	t4 dw ?
-	t5 dw ?
-	x dw 2 dup (?)
-	maina dw 2 dup (?)
-printVar dw ?  
-    FLAG DW ?
-    DIGITS DW ?
-.code
-SHOW PROC
+string pDec=R"(SHOW PROC
      push ax
      push bx
      push cx
@@ -95,53 +78,9 @@ SHOW PROC
     
 RET
 SHOW ENDP
-foo proc
-	push ax
-	push bx
-	push cx
-	push dx
-	mov bx,1
-	shl bx,1
-	mov ax,x[bx]
-	mov t0,ax
-	mov ax,t0
-	mov foof,ax
-	mov t1,ax
-	mov ax,foof
-	mov printVar,ax
-	call SHOW
-	pop ax
-	pop bx
-	pop cx
-	pop dx
-ret
-foo endp
-main proc
-	mov ax,@data
-	mov ds,ax
-	mov bx,1
-	shl bx,1
-	mov ax,2
-	mov maina[bx],ax
-	mov t2,ax
-	mov bx,1
-	shl bx,1
-	mov ax,maina[bx]
-	mov t3,ax
-	mov ax,t3
-	mov maink,ax
-	mov t4,ax
-	mov bx,1
-	shl bx,1
-	mov ax,123
-	mov x[bx],ax
-	mov t5,ax
-	call foo
-	mov ax,maink
-	mov printVar,ax
-	call SHOW
-	mov ah,4ch
-	int 21h
-main endp
+)";
 
-end main
+string printInit=R"(printVar dw ?  
+    FLAG DW ?
+    DIGITS DW ?
+)";

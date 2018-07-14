@@ -388,6 +388,10 @@ continue	{
 			fprintf(tokenOut,"<SEMICOLON,;>"); yylval.symbol=new SymbolInfo(yytext);
 			return SEMICOLON;
 		}
+"println"	{
+		yylval.symbol=new SymbolInfo(yytext);
+		return PRINTLN;
+}
 {unfstr}	{//Unfinished String
 				fprintf(logOut,"\nError at line %d. Missing terminating character %s\n",yylineno,yytext),terror++;
 			}
